@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pca.finexit.ca — Votre entreprise peut-elle survivre sans vous ?</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:     #1A2744;
+  --navy-mid: #2E4170;
+  --gold:     #C9A84C;
+  --gold-lt:  #E8D49A;
+  --white:    #FFFFFF;
+  --grey:     #8A8880;
+  --grey-lt:  #F7F6F2;
+  --grey-txt: #2C2C2C;
+  --border:   #E2E2E2;
+  --green:    #1E7B4B;
+  --yellow:   #B8860B;
+  --orange:   #C05E00;
+  --red:      #9B1C1C;
+  --green-lt:  #D1FAE5;
+  --yellow-lt: #FEF9C3;
+  --orange-lt: #FFEDD5;
+  --red-lt:    #FEE2E2;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--grey-txt);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ── TOPBAR ────────────────────────────────────────────────────── */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--navy);
+  border-bottom: 2px solid var(--gold);
+  padding: 0 48px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topbar-brand {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 5px;
+  color: var(--white);
+}
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.topbar-skip {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--gold-lt);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color .2s, border-color .2s;
+  cursor: pointer;
+}
+.topbar-skip:hover { color: var(--gold); border-color: var(--gold); }
+.topbar-skip .arrow { font-size: 10px; margin-left: 4px; }
+
+/* ── HERO ────────────────────────────────────────────────────────── */
+#phase-entry {
+  min-height: 100vh;
+  padding-top: 58px;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+}
+
+.hero-left {
+  background: var(--navy);
+  padding: 80px 60px 80px 9vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 3px; height: 100%;
+  background: var(--gold);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+.hero-left h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(40px, 4.5vw, 64px);
+  line-height: 1.07;
+  color: var(--white);
+  margin-bottom: 28px;
+}
+.hero-left h1 em { font-style: italic; font-weight: 400; color: var(--gold); }
+
+.hero-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--gold-lt);
+  line-height: 1.75;
+  margin-bottom: 52px;
+  max-width: 420px;
+}
+
+.btn-start {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 20px 48px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s, transform .15s;
+  align-self: flex-start;
+}
+.btn-start:hover { background: var(--gold-lt); transform: translateY(-1px); }
+
+.skip-link {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--grey);
+  text-decoration: none;
+  cursor: pointer;
+  align-self: flex-start;
+  border-bottom: 1px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.skip-link:hover { color: var(--gold-lt); border-color: var(--gold-lt); }
+
+.hero-right {
+  background: var(--grey-lt);
+  padding: 80px 9vw 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.trust-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: block;
+}
+.trust-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--navy);
+  padding: 36px 40px;
+  margin-bottom: 20px;
+}
+.trust-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--navy);
+  margin-bottom: 22px;
+}
+.trust-list { list-style: none; }
+.trust-list li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--grey-txt);
+  line-height: 1.5;
+}
+.trust-list li:last-child { border-bottom: none; }
+.check { color: var(--gold); font-weight: 600; flex-shrink: 0; }
+
+.quiz-meta {
+  background: var(--navy);
+  padding: 20px 28px;
+  display: flex;
+  gap: 28px;
+}
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.meta-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--gold);
+}
+.meta-lbl {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--gold-lt);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ── QUIZ ────────────────────────────────────────────────────────── */
+#phase-quiz {
+  display: none;
+  min-height: calc(100vh - 58px);
+  padding-top: 58px;
+  background: var(--grey-lt);
+  align-items: stretch;
+}
+#phase-quiz.active { display: flex; flex-direction: column; }
+
+.quiz-topbar {
+  background: var(--navy);
+  padding: 0 9vw;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+.q-progress-text {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.q-progress-bar-wrap {
+  flex: 1;
+  max-width: 260px;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  margin: 0 24px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.q-progress-bar-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: width .35s ease;
+  width: 0%;
+}
+.q-score-running {
+  font-size: 11px;
+  color: var(--grey);
+  letter-spacing: 1px;
+}
+
+.quiz-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 9vw;
+}
+
+.question-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--navy);
+  max-width: 760px;
+  width: 100%;
+  padding: 56px 64px;
+  animation: fadeUp .3s ease;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.q-domain {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+.q-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(18px, 2.2vw, 26px);
+  color: var(--navy);
+  line-height: 1.3;
+  margin-bottom: 40px;
+}
+
+.answers { display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px; }
+
+.answer-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 22px;
+  background: var(--grey-lt);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  text-align: left;
+  transition: background .15s, border-color .15s;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--grey-txt);
+  line-height: 1.5;
+  width: 100%;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+.answer-btn:hover {
+  background: var(--white);
+  border-color: var(--navy);
+}
+.answer-btn.selected {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+.answer-btn.selected .a-marker { background: var(--gold); color: var(--navy); }
+
+.a-marker {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--grey);
+  margin-top: 1px;
+}
+
+.q-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn-next {
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  padding: 16px 44px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s, opacity .2s;
+  font-family: 'Inter', sans-serif;
+}
+.btn-next:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.btn-next:not(:disabled):hover { background: var(--navy-mid); }
+
+.q-hint { font-size: 12px; color: var(--grey); font-weight: 300; }
+
+/* ── EMAIL GATE ──────────────────────────────────────────────────── */
+#phase-email {
+  display: none;
+  min-height: calc(100vh - 58px);
+  padding-top: 58px;
+  background: var(--navy);
+  align-items: center;
+  justify-content: center;
+}
+#phase-email.active { display: flex; }
+
+.email-card {
+  max-width: 560px;
+  width: 90%;
+  padding: 64px 60px;
+  background: var(--navy-mid);
+  border-top: 4px solid var(--gold);
+  text-align: center;
+  animation: fadeUp .4s ease;
+}
+.email-card .score-preview {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.email-card .score-max {
+  font-size: 14px;
+  color: var(--gold-lt);
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+}
+.email-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--white);
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+.email-card p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--gold-lt);
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+.email-form { display: flex; flex-direction: column; gap: 12px; }
+.email-input {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(201,168,76,0.4);
+  padding: 16px 20px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  color: var(--white);
+  outline: none;
+  width: 100%;
+  transition: border-color .2s;
+}
+.email-input::placeholder { color: rgba(255,255,255,0.35); }
+.email-input:focus { border-color: var(--gold); }
+.btn-result {
+  background: var(--gold);
+  color: var(--navy);
+  border: none;
+  padding: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: background .2s;
+}
+.btn-result:hover { background: var(--gold-lt); }
+.email-note { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 1px; text-align: center; }
+
+/* ── RESULT ──────────────────────────────────────────────────────── */
+#phase-result {
+  display: none;
+  padding-top: 58px;
+  background: var(--white);
+}
+#phase-result.active { display: block; }
+
+.result-hero {
+  padding: 80px 9vw 0;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.result-zone-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  border-radius: 0;
+}
+
+/* Gauge */
+.gauge-wrap { margin-bottom: 8px; }
+.gauge-svg { width: 100%; max-width: 260px; display: block; }
+.gauge-center-text { text-align: center; margin-bottom: 28px; }
+.gauge-pct-val {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(42px, 5vw, 60px);
+  line-height: 1;
+  display: block;
+}
+.gauge-pct-sub {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--grey);
+  display: block;
+  margin-top: 4px;
+}
+
+.result-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 2.5vw, 32px);
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 22px;
+}
+.result-description {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--grey-txt);
+  line-height: 1.8;
+  margin-bottom: 36px;
+  max-width: 500px;
+}
+.btn-result-cta {
+  display: inline-block;
+  padding: 18px 44px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  transition: opacity .2s, transform .15s;
+}
+.btn-result-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+/* Breakdown — tag grid */
+.result-breakdown {
+  background: var(--grey-lt);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--navy);
+  padding: 32px 36px;
+  margin-top: 8px;
+}
+.breakdown-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: block;
+}
+.risk-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.risk-col-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+.risk-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.risk-tag {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+.risk-tag.critique { background: #9B1C1C; color: #fff; }
+.risk-tag.eleve    { background: #C05E00; color: #fff; }
+.risk-tag.modere   { background: #B8860B; color: #fff; }
+.risk-tag.protege  { background: #1E7B4B; color: #fff; }
+
+/* ── AGIR SECTION ── */
+.result-agir {
+  padding: 80px 9vw;
+  background: var(--navy);
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.result-agir h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3vw, 40px);
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.result-agir p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--gold-lt);
+  line-height: 1.75;
+}
+.agir-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-agir {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  border: none;
+  padding: 24px 52px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: background .2s, transform .15s;
+}
+.btn-agir:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,16,34,0.88);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal-card {
+  background: var(--navy-mid);
+  border-top: 4px solid var(--gold);
+  padding: 52px 56px;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  animation: fadeUp .3s ease;
+}
+.modal-close {
+  position: absolute;
+  top: 18px; right: 22px;
+  background: none;
+  border: none;
+  color: var(--grey);
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color .2s;
+  font-family: 'Inter', sans-serif;
+}
+.modal-close:hover { color: var(--white); }
+.modal-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+.modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.modal-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  color: var(--white);
+  line-height: 1;
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+.modal-price small { font-size: 0.38em; color: var(--gold-lt); font-family: 'Inter', sans-serif; font-weight: 300; }
+.modal-financing {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.modal-sep { border: none; border-top: 1px solid rgba(201,168,76,0.25); margin-bottom: 20px; }
+.modal-footnote {
+  margin-top: 10px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+}
+.modal-includes { list-style: none; margin-bottom: 28px; }
+.modal-includes li {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--gold-lt);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  gap: 10px;
+}
+.modal-includes li::before { content: '—'; color: var(--gold); font-weight: 600; flex-shrink: 0; }
+.btn-modal-cta {
+  display: block;
+  background: var(--gold);
+  color: var(--navy);
+  text-align: center;
+  padding: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: background .2s;
+  border: none;
+  width: 100%;
+}
+.btn-modal-cta:hover { background: var(--gold-lt); }
+.modal-contact-line {
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--grey);
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* ── PRODUCT SECTION (skip destination) ────────────────────────── */
+#product {
+  padding: 100px 9vw;
+  background: var(--grey-lt);
+  border-top: 1px solid var(--border);
+}
+.product-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: start;
+}
+.product-inner .eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: block;
+}
+.product-inner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3vw, 42px);
+  color: var(--navy);
+  margin-bottom: 22px;
+  line-height: 1.2;
+}
+.product-inner > div > p {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--grey-txt);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.process-list { list-style: none; margin-top: 32px; }
+.process-list li {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--grey-txt);
+  line-height: 1.5;
+}
+.process-list li:last-child { border-bottom: none; }
+.p-step-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--gold);
+  flex-shrink: 0;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.product-card {
+  background: var(--navy);
+  border-top: 4px solid var(--gold);
+  padding: 48px 44px;
+}
+.product-card .pc-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+.product-card .pc-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.product-card .pc-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 24px;
+}
+.product-card hr { border: none; border-top: 1px solid rgba(201,168,76,0.25); margin-bottom: 20px; }
+.product-card ul { list-style: none; margin-bottom: 28px; }
+.product-card li {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--gold-lt);
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  gap: 10px;
+}
+.product-card li::before { content: '✓'; color: var(--gold); font-weight: 600; flex-shrink: 0; }
+.product-card .exec-note {
+  background: rgba(201,168,76,0.08);
+  border-left: 2px solid var(--gold);
+  padding: 14px 16px;
+  font-size: 12px;
+  color: var(--grey);
+  margin-bottom: 24px;
+}
+.btn-contact {
+  display: block;
+  background: var(--gold);
+  color: var(--navy);
+  text-align: center;
+  padding: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn-contact:hover { background: var(--gold-lt); }
+.contact-line {
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--grey);
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* ── ABOUT / CREDIBILITY ──────────────────────────────────────── */
+#about {
+  padding: 100px 9vw;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px;
+  align-items: start;
+}
+.about-grid .eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: block;
+}
+.about-grid h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 2.8vw, 38px);
+  color: var(--navy);
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+.about-grid > div > p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--grey-txt);
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+.team-stack { display: flex; flex-direction: column; gap: 14px; }
+.team-card-sm {
+  background: var(--grey-lt);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--navy);
+  padding: 22px 26px;
+}
+.team-card-sm .tc-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--navy);
+  margin-bottom: 3px;
+}
+.team-card-sm .tc-role {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+.team-card-sm p {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--grey);
+  line-height: 1.6;
+}
+
+/* ── FOOTER ────────────────────────────────────────────────────── */
+footer {
+  padding: 24px 48px;
+  background: var(--navy);
+  border-top: 2px solid var(--gold);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+footer span { font-size: 11px; color: var(--grey); letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<!-- ── TOPBAR ───────────────────────────────────────────────────────── -->
+<div class="topbar">
+  <span class="topbar-brand">FINEXIT</span>
+  <div class="topbar-right">
+    <span class="topbar-skip" onclick="openModal()">
+      Skip the test — je connais mon risque <span class="arrow">→</span>
+    </span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PHASE 0 — ENTRY
+══════════════════════════════════════════════════════════════════ -->
+<div id="phase-entry">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      <span>Diagnostic de risque · Gratuit</span>
+    </div>
+    <h1>Votre entreprise<br>peut-elle<br>survivre<br><em>sans vous ?</em></h1>
+    <p class="hero-sub">12 questions. 5 minutes. Un niveau d'urgence clair — et un plan pour corriger les lacunes qui comptent vraiment.</p>
+    <button class="btn-start" onclick="startQuiz()">Commencer le test</button>
+    <span class="skip-link" onclick="openModal()">Vous connaissez déjà votre risque ? → Voir le diagnostic</span>
+  </div>
+
+  <div class="hero-right">
+    <span class="trust-label">Ce que le test évalue</span>
+    <div class="trust-card">
+      <h3>Les trois sphères du risque</h3>
+      <ul class="trust-list">
+        <li><span class="check">✓</span> Dépendance opérationnelle et décisionnelle</li>
+        <li><span class="check">✓</span> Documentation des processus critiques</li>
+        <li><span class="check">✓</span> Accès financiers et bancaires</li>
+        <li><span class="check">✓</span> Mandats légaux et procurations d'affaires</li>
+        <li><span class="check">✓</span> Remplaçant désigné et plan de relève</li>
+        <li><span class="check">✓</span> Résilience sans le propriétaire</li>
+      </ul>
+    </div>
+    <div class="quiz-meta">
+      <div class="meta-item">
+        <span class="meta-val">12</span>
+        <span class="meta-lbl">Questions</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-val">5 min</span>
+        <span class="meta-lbl">Durée estimée</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-val">4</span>
+        <span class="meta-lbl">Zones de risque</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PHASE 1 — QUIZ
+══════════════════════════════════════════════════════════════════ -->
+<div id="phase-quiz">
+  <div class="quiz-topbar">
+    <span class="q-progress-text" id="q-counter">Question 1 / 12</span>
+    <div class="q-progress-bar-wrap">
+      <div class="q-progress-bar-fill" id="q-bar"></div>
+    </div>
+    <span class="q-score-running" id="q-score-live"></span>
+  </div>
+
+  <div class="quiz-body">
+    <div class="question-card" id="question-card">
+      <span class="q-domain" id="q-domain"></span>
+      <p class="q-text" id="q-text"></p>
+      <div class="answers" id="q-answers"></div>
+      <div class="q-footer">
+        <span class="q-hint">Choisissez la réponse qui décrit le mieux votre situation réelle.</span>
+        <button class="btn-next" id="btn-next" disabled onclick="nextQuestion()">Suivant →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PHASE 2 — EMAIL GATE
+══════════════════════════════════════════════════════════════════ -->
+<div id="phase-email">
+  <div class="email-card">
+    <div class="score-preview" id="email-score-display">—</div>
+    <div class="score-max">score de préparation</div>
+    <h2>Votre analyse est prête.</h2>
+    <p>Entrez votre courriel pour recevoir votre niveau de risque détaillé, les dimensions à risque, et vos prochaines étapes.</p>
+    <div class="email-form">
+      <input type="email" class="email-input" id="email-input" placeholder="votre@courriel.com" />
+      <button class="btn-result" onclick="submitEmail()">Voir mon résultat</button>
+    </div>
+    <p class="email-note" style="margin-top:14px;">Aucun abonnement. Un courriel de suivi si vous le souhaitez.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PHASE 3 — RESULT
+══════════════════════════════════════════════════════════════════ -->
+<div id="phase-result">
+  <div class="result-hero">
+
+    <div>
+      <div class="result-zone-badge" id="r-badge"></div>
+      <div class="gauge-wrap" id="r-gauge"></div>
+      <div class="gauge-center-text">
+        <span class="gauge-pct-val" id="r-score-pct"></span>
+        <span class="gauge-pct-sub">préparation</span>
+      </div>
+      <h2 class="result-title" id="r-title"></h2>
+      <p class="result-description" id="r-desc"></p>
+      <a class="btn-result-cta" id="r-cta"></a>
+    </div>
+
+    <div>
+      <div class="result-breakdown">
+        <span class="breakdown-title">Votre résultat par dimension</span>
+        <div id="r-breakdown"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="result-agir">
+    <div>
+      <h2 id="r-next-title">La prochaine étape.</h2>
+      <p id="r-next-desc">Le diagnostic PCA complet prend ce test comme point de départ et documente chaque lacune avec un plan d'action concret, livré lors d'une séance de présentation personnalisée.</p>
+    </div>
+    <div class="agir-action">
+      <button class="btn-agir" onclick="openModal()">Régler mon problème</button>
+    </div>
+  </div>
+
+  <section id="about-result"><!-- about section repeats below --></section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PRODUCT SECTION — skip destination
+══════════════════════════════════════════════════════════════════ -->
+<section id="product">
+  <div class="product-inner">
+    <div>
+      <span class="eyebrow">Diagnostic PCA complet</span>
+      <h2>Le diagnostic PCA Finexit.</h2>
+      <p>Le diagnostic PCA Finexit évalue systématiquement votre niveau de préparation sur les trois sphères critiques — exploitation, finances, personnes — et vous remet un rapport de risque priorisé avec un plan d'action.</p>
+      <p>Ce n'est pas une analyse ponctuelle. C'est l'étape 01 d'un processus de transformation structuré sur 2 à 3 ans.</p>
+      <ul class="process-list">
+        <li><span class="p-step-n">01</span><div><strong>Diagnostic</strong> — Questionnaire structuré, rapport de risque, séance de présentation.</div></li>
+        <li><span class="p-step-n">02</span><div><strong>Analyse</strong> — Évaluation approfondie, cartographie des rôles critiques, accès et mandats. Séance de travail.</div></li>
+        <li><span class="p-step-n">03</span><div><strong>Rédaction</strong> — Création du PCA complet, configuration des accès, validation juridique si requis.</div></li>
+        <li><span class="p-step-n">04</span><div><strong>Exécution</strong> — Communication, documentation des processus, mise en œuvre avec les personnes désignées.</div></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="product-card">
+        <span class="pc-label">Étape 01</span>
+        <div class="pc-name">Diagnostic PCA complet</div>
+        <hr>
+        <ul>
+          <li>Questionnaire structuré</li>
+          <li>Analyse des trois sphères</li>
+          <li>Rapport de risque priorisé</li>
+          <li>Plan d'action recommandé</li>
+          <li>Séance de présentation</li>
+        </ul>
+        <div class="exec-note">Exécution complète disponible à la pièce selon les travaux identifiés.</div>
+        <button class="btn-contact" onclick="openModal()">Prendre rendez-vous</button>
+        <p class="contact-line">el@finexit.ca · Value Advisor · Finexit</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <span class="eyebrow">Qui nous sommes</span>
+      <h2>Finexit — cabinet dédié à la résilience et à la planification de sortie PME.</h2>
+      <p>Nous ne faisons pas de consultation généraliste. Nous travaillons exclusivement avec des propriétaires de PME québécoises qui veulent bâtir des entreprises capables de survivre à leur fondateur — et de se vendre dans de bonnes conditions le moment venu.</p>
+      <p>Notre approche est structurée sur 2 à 3 ans, en appliquant le cadre EPI Value Acceleration. Le PCA est l'une des premières étapes de cette transformation.</p>
+    </div>
+    <div class="team-stack">
+      <div class="team-card-sm">
+        <div class="tc-name">Éric Levesque</div>
+        <span class="tc-role">Value Advisor</span>
+        <p>Certification CEPA. Expérience directe en croissance, restructuration, financement et franchisage. Co-fondateur de Finexit.</p>
+      </div>
+      <div class="team-card-sm">
+        <div class="tc-name">Marc Boisjoli</div>
+        <span class="tc-role">Président & Co-fondateur</span>
+        <p>Co-fondateur et Président de Finexit. Accompagnement stratégique et planification de sortie auprès de PME québécoises.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>FINEXIT · Plan de Continuité des Affaires</span>
+  <span>pca.finexit.ca · el@finexit.ca</span>
+  <span>Confidentiel</span>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     MODAL — DIAGNOSTIC PCA
+══════════════════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOnBg(event)">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <span class="modal-eyebrow">Diagnostic PCA complet</span>
+    <div class="modal-title">Plan de Continuité des Affaires</div>
+    <hr class="modal-sep">
+    <ul class="modal-includes">
+      <li>Questionnaire structuré approfondi</li>
+      <li>Analyse des trois sphères</li>
+      <li>Rapport de risque priorisé</li>
+      <li>Plan d'action recommandé</li>
+      <li>Séance de présentation incluse</li>
+    </ul>
+    <div class="modal-price">3 000 $<small> CAD</small></div>
+    <p class="modal-financing">Financement disponible*</p>
+    <a href="mailto:el@finexit.ca" class="btn-modal-cta">Prendre rendez-vous</a>
+    <p class="modal-contact-line">el@finexit.ca · Éric Levesque · Value Advisor · Finexit</p>
+    <p class="modal-footnote">* Selon conditions d'admissibilité. Demandez les détails lors de votre premier entretien.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════════════════════════ -->
+<script>
+"use strict";
+
+// ── QUESTIONS DATA ────────────────────────────────────────────────
+const questions = [
+  {
+    domain: "Dépendance décisionnelle",
+    text: "Si vous étiez absent une semaine complète sans préavis, combien de décisions importantes resteraient en attente ?",
+    answers: [
+      { text: "Presque toutes — personne d'autre ne peut les prendre.", score: 3 },
+      { text: "La majorité — certaines se prendraient, mais les autres bloqueraient.", score: 2 },
+      { text: "Quelques-unes — mon équipe peut gérer la plupart des situations.", score: 1 },
+      { text: "Aucune — nous avons une structure de décision claire sans moi.", score: 0 }
+    ]
+  },
+  {
+    domain: "Relations clients",
+    text: "Vos clients les plus importants ont-ils une relation directe avec quelqu'un d'autre dans votre entreprise ?",
+    answers: [
+      { text: "Non — ils traitent exclusivement avec moi.", score: 3 },
+      { text: "Rarement — ils préfèrent me parler directement.", score: 2 },
+      { text: "Partiellement — certains connaissent d'autres membres de mon équipe.", score: 1 },
+      { text: "Oui — les relations clients sont partagées et documentées.", score: 0 }
+    ]
+  },
+  {
+    domain: "Documentation des processus",
+    text: "Les processus critiques de votre entreprise (opérations, livraison, vente) sont-ils documentés quelque part ?",
+    answers: [
+      { text: "Non — c'est dans ma tête.", score: 3 },
+      { text: "Quelques notes informelles, mais rien de structuré.", score: 2 },
+      { text: "Partiellement — certains processus sont écrits, d'autres non.", score: 1 },
+      { text: "Oui — tout est documenté, accessible et à jour.", score: 0 }
+    ]
+  },
+  {
+    domain: "Accès financier et bancaire",
+    text: "En cas d'incapacité soudaine, qui d'autre pourrait signer des chèques ou accéder aux comptes de l'entreprise ?",
+    answers: [
+      { text: "Personne — je suis le seul signataire.", score: 3 },
+      { text: "Mon comptable a un accès limité, mais pas pour les opérations.", score: 2 },
+      { text: "Il y a un co-signataire, mais il n'est pas au courant des opérations.", score: 1 },
+      { text: "Plusieurs personnes autorisées, avec des instructions claires.", score: 0 }
+    ]
+  },
+  {
+    domain: "Remplaçant désigné",
+    text: "Y a-t-il une personne spécifiquement désignée pour vous remplacer temporairement si vous étiez indisponible ?",
+    answers: [
+      { text: "Non, il n'y a personne.", score: 3 },
+      { text: "Quelqu'un pourrait faire le travail, mais ce n'est pas formalisé.", score: 2 },
+      { text: "Il y a une personne identifiée, mais elle n'a pas été préparée pour ce rôle.", score: 1 },
+      { text: "Oui — un remplaçant est désigné, formé et informé.", score: 0 }
+    ]
+  },
+  {
+    domain: "Mandats et procurations",
+    text: "Avez-vous des mandats légaux ou des procurations spécifiquement conçus pour la continuité de votre entreprise — et non seulement pour votre situation personnelle ?",
+    answers: [
+      { text: "Non, rien.", score: 3 },
+      { text: "J'ai un mandat d'inaptitude personnel, mais rien pour l'entreprise.", score: 2 },
+      { text: "Nous avons discuté avec notre notaire, mais rien n'est signé.", score: 1 },
+      { text: "Oui — mandats corporatifs et procurations d'affaires sont en place.", score: 0 }
+    ]
+  },
+  {
+    domain: "Résilience opérationnelle",
+    text: "Sans vous, combien de temps votre entreprise peut-elle fonctionner normalement avant que les problèmes deviennent sérieux ?",
+    answers: [
+      { text: "Moins de 2 semaines.", score: 3 },
+      { text: "2 à 4 semaines.", score: 2 },
+      { text: "1 à 3 mois.", score: 1 },
+      { text: "Plus de 3 mois.", score: 0 }
+    ]
+  },
+  {
+    domain: "Fournisseurs et partenaires",
+    text: "Vos fournisseurs ou partenaires stratégiques ont-ils des contacts dans votre équipe autres que vous ?",
+    answers: [
+      { text: "Non — toutes les relations stratégiques passent par moi.", score: 3 },
+      { text: "Certains fournisseurs connaissent mon équipe superficiellement.", score: 2 },
+      { text: "Quelques partenaires ont des contacts chez nous, mais ce n'est pas formalisé.", score: 1 },
+      { text: "Oui — toutes les relations critiques sont partagées et documentées.", score: 0 }
+    ]
+  },
+  {
+    domain: "Accès aux systèmes",
+    text: "Y a-t-il quelqu'un d'autre qui a accès aux systèmes et outils critiques de votre entreprise (TI, logiciels, portails bancaires) ?",
+    answers: [
+      { text: "Non — les accès critiques ne sont connus que de moi.", score: 3 },
+      { text: "Certaines personnes ont des accès partiels, mais rien n'est documenté.", score: 2 },
+      { text: "Des accès existent mais ne sont pas gérés ni mis à jour régulièrement.", score: 1 },
+      { text: "Oui — les accès sont documentés, partagés et maintenus à jour.", score: 0 }
+    ]
+  },
+  {
+    domain: "Instructions aux parties prenantes",
+    text: "Si vous deveniez indisponible demain matin, les personnes clés (famille, équipe, comptable, notaire) sauraient-elles quoi faire et où trouver les informations dont elles ont besoin ?",
+    answers: [
+      { text: "Non — personne ne sait vraiment quoi faire.", score: 3 },
+      { text: "Ma famille a une idée générale, mais mon équipe ne sait rien.", score: 2 },
+      { text: "Mon équipe a quelques informations, mais rien n'est formalisé.", score: 1 },
+      { text: "Oui — les personnes clés ont des instructions écrites, claires et accessibles.", score: 0 }
+    ]
+  },
+  {
+    domain: "Facteurs de risque personnels",
+    text: "Y a-t-il des facteurs dans votre situation qui augmentent votre niveau de risque ? (âge, santé, voyages fréquents, associés, structure sans conseil d'administration)",
+    answers: [
+      { text: "Oui — plusieurs facteurs s'appliquent à ma situation.", score: 3 },
+      { text: "Un ou deux facteurs s'appliquent.", score: 2 },
+      { text: "Pas vraiment, mais j'y pense de temps en temps.", score: 1 },
+      { text: "Non — ma situation est stable et peu risquée.", score: 0 }
+    ]
+  },
+  {
+    domain: "Niveau de préparation perçu",
+    text: "Si on vous demandait aujourd'hui : « Votre entreprise est-elle documentée et protégée contre votre absence imprévue ? » — quelle serait votre réponse honnête ?",
+    answers: [
+      { text: "Absolument pas — nous n'avons rien préparé.", score: 3 },
+      { text: "Probablement pas — j'y ai pensé mais rien n'est en place.", score: 2 },
+      { text: "En partie — il y a des lacunes que je connais.", score: 1 },
+      { text: "Oui — nous sommes bien préparés.", score: 0 }
+    ]
+  }
+];
+
+// ── ZONES DATA ──────────────────────────────────────────────────
+const zones = [
+  {
+    min: 0, max: 8,
+    color: "#1E7B4B", bgLight: "#D1FAE5", label: "Zone verte — Vigilance",
+    title: "Des bases en place. Des lacunes à combler.",
+    desc: "Vous avez intégré certains réflexes de protection. Il reste probablement des lacunes — mandats d'affaires, documentation partielle, accès non centralisés — mais les fondations existent. Le diagnostic PCA complet vous permettra de valider ce qui tient vraiment sous pression, et de corriger ce qui manque avant que ce soit urgent.",
+    ctaText: "Valider les lacunes — Diagnostic complet",
+    ctaHref: "#product",
+    nextTitle: "Valider ce qui tient.",
+    nextDesc: "Même avec de bonnes bases, les lacunes restantes peuvent avoir des conséquences importantes dans un scénario réel. Le diagnostic complet vous donne une image objective — et un plan pour ce qui reste à faire."
+  },
+  {
+    min: 9, max: 18,
+    color: "#B8860B", bgLight: "#FEF9C3", label: "Zone jaune — Risque modéré",
+    title: "Des vulnérabilités importantes existent.",
+    desc: "Vous avez identifié des risques réels. Certains processus, accès ou relations critiques ne survivraient pas à votre absence de plus de quelques semaines. Ce n'est pas une urgence immédiate — mais ce le deviendra si rien ne change. Le diagnostic PCA vous donnera une image précise de ces vulnérabilités et un plan pour les adresser.",
+    ctaText: "Voir le diagnostic complet",
+    ctaHref: "#product",
+    nextTitle: "Transformer la vigilance en plan.",
+    nextDesc: "Vous savez qu'il y a des problèmes. Le diagnostic les documente avec précision et vous livre un plan d'action classé par priorité — pour que vous sachiez exactement quoi faire en premier."
+  },
+  {
+    min: 19, max: 28,
+    color: "#C05E00", bgLight: "#FFEDD5", label: "Zone orange — Danger",
+    title: "Un événement imprévu aurait des conséquences sérieuses.",
+    desc: "Votre entreprise a des zones critiques non protégées. Une maladie, un accident, un conflit d'associés déclencherait une série de problèmes opérationnels et financiers en quelques semaines. Ce n'est pas une question de <em>si</em> — c'est une question de <em>quand</em>. Le diagnostic PCA est la prochaine étape — pas pour vous faire peur, mais pour changer concrètement cette réalité.",
+    ctaText: "Prendre rendez-vous",
+    ctaHref: "#",
+    nextTitle: "Agir avant que le risque se concrétise.",
+    nextDesc: "À ce niveau de risque, chaque mois sans plan est un mois de vulnérabilité réelle. Éric peut évaluer votre situation spécifique et vous proposer un plan de match concret dès le premier entretien."
+  },
+  {
+    min: 29, max: 36,
+    color: "#9B1C1C", bgLight: "#FEE2E2", label: "Zone rouge — Critique",
+    title: "Votre entreprise repose entièrement sur vous.",
+    desc: "Aucune documentation. Aucun accès partagé. Aucun plan. Une absence non planifiée est une menace existentielle directe — pour l'opération, pour la valeur, pour ce que vous avez mis des années à construire. Le diagnostic PCA est urgent. Pas pour vous faire peur — pour changer cette réalité en 30 jours.",
+    ctaText: "Prendre rendez-vous",
+    ctaHref: "#",
+    nextTitle: "L'urgence, c'est maintenant.",
+    nextDesc: "À ce niveau, le risque n'est pas hypothétique. Éric Levesque peut vous rencontrer rapidement pour démarrer le diagnostic et établir un plan d'action dans les prochaines semaines."
+  }
+];
+
+// ── STATE ────────────────────────────────────────────────────────
+let currentQ = 0;
+let scores = new Array(12).fill(null);
+let selectedScore = null;
+
+// ── INIT QUIZ ────────────────────────────────────────────────────
+function startQuiz() {
+  document.getElementById('phase-entry').style.display = 'none';
+  const quiz = document.getElementById('phase-quiz');
+  quiz.classList.add('active');
+  renderQuestion(0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderQuestion(idx) {
+  const q = questions[idx];
+  selectedScore = null;
+
+  document.getElementById('q-counter').textContent = `Question ${idx + 1} / 12`;
+  document.getElementById('q-bar').style.width = `${((idx) / 12) * 100}%`;
+  document.getElementById('q-domain').textContent = q.domain;
+  document.getElementById('q-text').textContent = q.text;
+  document.getElementById('btn-next').disabled = true;
+
+  const filled = scores.filter(s => s !== null).length;
+  document.getElementById('q-score-live').textContent = filled > 0
+    ? `Score en cours : ${scores.filter(s=>s!==null).reduce((a,b)=>a+b,0)} / ${filled * 3}`
+    : '';
+
+  const labels = ['A', 'B', 'C', 'D'];
+  const container = document.getElementById('q-answers');
+  container.innerHTML = '';
+
+  // Animate card
+  const card = document.getElementById('question-card');
+  card.style.animation = 'none';
+  card.offsetHeight; // reflow
+  card.style.animation = '';
+
+  q.answers.forEach((ans, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    if (scores[idx] !== null && ans.score === scores[idx]) {
+      btn.classList.add('selected');
+    }
+    btn.innerHTML = `<span class="a-marker">${labels[i]}</span><span>${ans.text}</span>`;
+    btn.addEventListener('click', () => selectAnswer(idx, ans.score, btn, container));
+    container.appendChild(btn);
+  });
+
+  // If returning to a previously answered question
+  if (scores[idx] !== null) {
+    document.getElementById('btn-next').disabled = false;
+    selectedScore = scores[idx];
+  }
+}
+
+function selectAnswer(qIdx, score, btn, container) {
+  container.querySelectorAll('.answer-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  scores[qIdx] = score;
+  selectedScore = score;
+  document.getElementById('btn-next').disabled = false;
+}
+
+function nextQuestion() {
+  if (selectedScore === null) return;
+  currentQ++;
+
+  if (currentQ >= 12) {
+    showEmailGate();
+  } else {
+    renderQuestion(currentQ);
+  }
+}
+
+// ── EMAIL GATE ───────────────────────────────────────────────────
+function showEmailGate() {
+  const total = scores.reduce((a, b) => a + (b || 0), 0);
+  const prepPct = Math.round((1 - total / 36) * 100);
+  document.getElementById('phase-quiz').classList.remove('active');
+  document.getElementById('phase-quiz').style.display = 'none';
+  // Show preparedness % in gate — low number = bad, intuitive
+  document.getElementById('email-score-display').textContent = prepPct + '%';
+  const email = document.getElementById('phase-email');
+  email.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function submitEmail() {
+  const emailVal = document.getElementById('email-input').value.trim();
+  if (!emailVal || !emailVal.includes('@')) {
+    document.getElementById('email-input').style.borderColor = '#ef4444';
+    document.getElementById('email-input').focus();
+    return;
+  }
+
+  // ── BACKEND HOOK ──────────────────────────────────────────────
+  // To connect to MailMeteor / HubSpot / webhook:
+  // fetch('/api/leads', { method:'POST', body: JSON.stringify({ email: emailVal, score: total }) })
+  // ──────────────────────────────────────────────────────────────
+
+  document.getElementById('phase-email').classList.remove('active');
+  document.getElementById('phase-email').style.display = 'none';
+  showResult(emailVal);
+}
+
+// ── RESULT ───────────────────────────────────────────────────────
+function showResult(email) {
+  const total = scores.reduce((a, b) => a + (b || 0), 0);
+  const prepPct = Math.round((1 - total / 36) * 100);
+  const zone = zones.find(z => total >= z.min && total <= z.max);
+
+  document.getElementById('phase-result').classList.add('active');
+
+  // Badge
+  const badge = document.getElementById('r-badge');
+  badge.style.background = zone.bgLight;
+  badge.style.color = zone.color;
+  badge.style.border = `1px solid ${zone.color}`;
+  badge.textContent = zone.label;
+
+  // Gauge + score %
+  document.getElementById('r-gauge').innerHTML = buildGauge(prepPct, zone.color);
+  const scorePct = document.getElementById('r-score-pct');
+  scorePct.textContent = prepPct + '%';
+  scorePct.style.color = zone.color;
+
+  document.getElementById('r-title').textContent = zone.title;
+  document.getElementById('r-desc').innerHTML = zone.desc;
+
+  // CTA
+  const cta = document.getElementById('r-cta');
+  cta.textContent = zone.ctaText;
+  cta.style.background = zone.color;
+  cta.style.color = '#FFFFFF';
+  if (zone.ctaHref === '#') {
+    cta.href = '#';
+    cta.onclick = function(e) { e.preventDefault(); openModal(); };
+  } else {
+    cta.href = zone.ctaHref;
+    cta.onclick = null;
+  }
+
+  // Next step
+  document.getElementById('r-next-title').textContent = zone.nextTitle;
+  document.getElementById('r-next-desc').textContent = zone.nextDesc;
+
+  // Breakdown — tag grid, grouped by risk level
+  const dims = [
+    "Décisions", "Relations clients", "Documentation",
+    "Accès financiers", "Remplaçant", "Mandats légaux",
+    "Résilience", "Fournisseurs", "Accès systèmes",
+    "Parties prenantes", "Risque personnel", "Conscience"
+  ];
+
+  const levels = [
+    { key: 'critique', score: 3, label: 'Critique',     color: '#9B1C1C' },
+    { key: 'eleve',    score: 2, label: 'Élevé',        color: '#C05E00' },
+    { key: 'modere',   score: 1, label: 'Modéré',       color: '#B8860B' },
+    { key: 'protege',  score: 0, label: 'Sous contrôle', color: '#1E7B4B' },
+  ];
+
+  const breakdown = document.getElementById('r-breakdown');
+  breakdown.innerHTML = '';
+
+  // Build columns container
+  const colsDiv = document.createElement('div');
+  colsDiv.className = 'risk-columns';
+
+  levels.forEach(lvl => {
+    const tagged = dims.filter((_, i) => scores[i] === lvl.score);
+    if (tagged.length === 0) return;
+
+    const colDiv = document.createElement('div');
+    colDiv.innerHTML = `<span class="risk-col-label" style="color:${lvl.color}">${lvl.label} — ${tagged.length} dimension${tagged.length > 1 ? 's' : ''}</span>
+      <div class="risk-tags">${tagged.map(d => `<span class="risk-tag ${lvl.key}">${d}</span>`).join('')}</div>`;
+    colsDiv.appendChild(colDiv);
+  });
+
+  breakdown.appendChild(colsDiv);
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── GAUGE ─────────────────────────────────────────────────────────
+function buildGauge(prepPct, zoneColor) {
+  // Half-circle: M20,112 A90,90 0 0,1 200,112
+  // Center (110,112), radius 90. Left=0% prep (bad), Right=100% (good).
+  // Needle angle: 180° at 0%, 0° at 100%.
+  const θDeg = 180 - prepPct * 1.8;
+  const θRad = θDeg * Math.PI / 180;
+  const nx = (110 + 90 * Math.cos(θRad)).toFixed(2);
+  const ny = (112 - 90 * Math.sin(θRad)).toFixed(2);
+  const arc = "M20,112 A90,90 0 0,1 200,112";
+  // 4 segments × 68.7px with ~2px gap, total arc ≈ 282.74
+  return `<svg viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg" class="gauge-svg">
+    <path d="${arc}" fill="none" stroke="#E2E2E2" stroke-width="16" stroke-linecap="butt"/>
+    <path d="${arc}" fill="none" stroke="#9B1C1C" stroke-width="16" stroke-linecap="butt" stroke-dasharray="68.7 214.04"/>
+    <path d="${arc}" fill="none" stroke="#C05E00" stroke-width="16" stroke-linecap="butt" stroke-dasharray="68.7 214.04" stroke-dashoffset="-70.7"/>
+    <path d="${arc}" fill="none" stroke="#B8860B" stroke-width="16" stroke-linecap="butt" stroke-dasharray="68.7 214.04" stroke-dashoffset="-141.4"/>
+    <path d="${arc}" fill="none" stroke="#1E7B4B" stroke-width="16" stroke-linecap="butt" stroke-dasharray="68.7 214.04" stroke-dashoffset="-212.1"/>
+    <line x1="110" y1="112" x2="${nx}" y2="${ny}" stroke="${zoneColor}" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="110" cy="112" r="6" fill="${zoneColor}"/>
+    <circle cx="${nx}" cy="${ny}" r="4" fill="${zoneColor}"/>
+  </svg>`;
+}
+
+// ── MODAL ─────────────────────────────────────────────────────────
+function openModal() {
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOnBg(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+// ── SKIP ──────────────────────────────────────────────────────────
+function scrollToProduct() {
+  document.getElementById('product').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
