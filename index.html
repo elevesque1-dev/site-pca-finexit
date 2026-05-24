@@ -1459,9 +1459,30 @@ function submitEmail() {
     return;
   }
 
-  // ── BACKEND HOOK ──────────────────────────────────────────────
-  // To connect to MailMeteor / HubSpot / webhook:
-  // fetch('/api/leads', { method:'POST', body: JSON.stringify({ email: emailVal, score: total }) })
+  // ── BACKEND — capturer le lead ─────────────────────────────────
+  const scoreRaw = scores.reduce((a, b) => a + (b || 0), 0);
+  const scorePct = Math.round((1 - scoreRaw / 36) * 100);
+  const zone     = zones.find(z => scoreRaw >= z.min && scoreRaw <= z.max);
+  const domains  = [
+    "Dépendance décisionnelle", "Relations clients", "Documentation des processus",
+    "Accès financier et bancaire", "Remplaçant désigné", "Mandats et procurations",
+    "Résilience opérationnelle", "Fournisseurs et partenaires", "Accès aux systèmes",
+    "Instructions aux parties prenantes", "Facteurs de risque personnels", "Niveau de préparation perçu"
+  ];
+  const breakdown = domains.map((d, i) => ({ dimension: d, score: scores[i] }));
+
+  fetch('https://portail.finexit.ca/api/pca-leads', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email:     emailVal,
+      scoreRaw:  scoreRaw,
+      scorePct:  scorePct,
+      zone:      zone ? zone.label : 'Inconnu',
+      breakdown: breakdown,
+      source:    'pca.finexit.ca'
+    })
+  }).catch(() => {}); // fire-and-forget — ne bloque pas l'UX
   // ──────────────────────────────────────────────────────────────
 
   document.getElementById('phase-email').classList.remove('active');
