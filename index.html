@@ -1043,13 +1043,17 @@ footer span { font-size: 11px; color: var(--grey); letter-spacing: 1px; }
   <div class="email-card">
     <div class="score-preview" id="email-score-display">—</div>
     <div class="score-max">score de préparation</div>
-    <h2>Votre analyse est prête.</h2>
-    <p>Entrez votre courriel pour recevoir votre niveau de risque détaillé, les dimensions à risque, et vos prochaines étapes.</p>
+    <h2>Ton analyse est prête.</h2>
+    <p>Entre ton courriel pour recevoir ton niveau de risque détaillé, les dimensions à risque et tes prochaines étapes.</p>
     <div class="email-form">
-      <input type="email" class="email-input" id="email-input" placeholder="votre@courriel.com" />
+      <input type="email" class="email-input" id="email-input" placeholder="ton@courriel.com" />
       <button class="btn-result" onclick="submitEmail()">Voir mon résultat</button>
     </div>
-    <p class="email-note" style="margin-top:14px;">Aucun abonnement. Un courriel de suivi si vous le souhaitez.</p>
+    <p class="email-note" style="margin-top:14px;">Aucun abonnement. Un courriel de suivi, c'est tout.</p>
+    <button class="email-why-toggle" onclick="toggleEmailWhy()" style="margin-top:12px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.45);font-size:12px;text-decoration:underline;padding:0;">Pourquoi dois-je donner mon courriel ?</button>
+    <div id="email-why-box" style="display:none;margin-top:10px;padding:12px 16px;background:rgba(255,255,255,0.07);border-radius:4px;font-size:12px;color:rgba(255,255,255,0.6);line-height:1.6;text-align:left;">
+      Ton courriel sert à t'envoyer ton résultat et, si tu le souhaites, à te faire parvenir des ressources sur la planification de continuité d'affaires. Tu ne seras jamais abonné automatiquement à quoi que ce soit. Aucune revente. Tu peux te désinscrire en tout temps en répondant à n'importe quel courriel.
+    </div>
   </div>
 </div>
 
@@ -1198,27 +1202,37 @@ footer span { font-size: 11px; color: var(--grey); letter-spacing: 1px; }
 const questions = [
   {
     domain: "Dépendance décisionnelle",
-    text: "Si vous étiez absent une semaine complète sans préavis, combien de décisions importantes resteraient en attente ?",
+    text: "Si tu devais t'absenter une semaine complète sans avertir, combien de décisions importantes resteraient bloquées en attendant ton retour ?",
     answers: [
-      { text: "Presque toutes — personne d'autre ne peut les prendre.", score: 3 },
-      { text: "La majorité — certaines se prendraient, mais les autres bloqueraient.", score: 2 },
+      { text: "Presque toutes — personne d'autre ne peut les prendre à ma place.", score: 3 },
+      { text: "La majorité — certaines se prendraient, mais les autres resteraient bloquées.", score: 2 },
       { text: "Quelques-unes — mon équipe peut gérer la plupart des situations.", score: 1 },
-      { text: "Aucune — nous avons une structure de décision claire sans moi.", score: 0 }
+      { text: "Aucune — nous avons une structure de décision claire qui fonctionne sans moi.", score: 0 }
     ]
   },
   {
-    domain: "Relations clients",
-    text: "Vos clients les plus importants ont-ils une relation directe avec quelqu'un d'autre dans votre entreprise ?",
+    domain: "Accès financier",
+    text: "Si tu étais temporairement indisponible, qui d'autre aurait le pouvoir de signer les chèques ou d'accéder aux comptes de ton entreprise ?",
     answers: [
-      { text: "Non — ils traitent exclusivement avec moi.", score: 3 },
-      { text: "Rarement — ils préfèrent me parler directement.", score: 2 },
-      { text: "Partiellement — certains connaissent d'autres membres de mon équipe.", score: 1 },
-      { text: "Oui — les relations clients sont partagées et documentées.", score: 0 }
+      { text: "Personne — je suis le seul signataire autorisé.", score: 3 },
+      { text: "Mon comptable a un accès limité, mais pas pour les opérations courantes.", score: 2 },
+      { text: "Il y a un co-signataire, mais il n'est pas vraiment au courant des opérations.", score: 1 },
+      { text: "Plusieurs personnes autorisées, avec des instructions claires en place.", score: 0 }
+    ]
+  },
+  {
+    domain: "Remplaçant désigné",
+    text: "As-tu une personne officiellement désignée et prête à te remplacer temporairement si tu n'étais pas disponible ?",
+    answers: [
+      { text: "Non, il n'y a personne pour assurer ma place.", score: 3 },
+      { text: "Quelqu'un pourrait gérer, mais ce n'est pas formalisé.", score: 2 },
+      { text: "Il y a une personne identifiée, mais elle n'a pas été préparée pour ce rôle.", score: 1 },
+      { text: "Oui — un remplaçant est désigné, formé et informé.", score: 0 }
     ]
   },
   {
     domain: "Documentation des processus",
-    text: "Les processus critiques de votre entreprise (opérations, livraison, vente) sont-ils documentés quelque part ?",
+    text: "Est-ce que les façons de faire clés pour ton entreprise (opérations, ventes, livraison) sont écrites et documentées quelque part ?",
     answers: [
       { text: "Non — c'est dans ma tête.", score: 3 },
       { text: "Quelques notes informelles, mais rien de structuré.", score: 2 },
@@ -1227,38 +1241,8 @@ const questions = [
     ]
   },
   {
-    domain: "Accès financier et bancaire",
-    text: "En cas d'incapacité soudaine, qui d'autre pourrait signer des chèques ou accéder aux comptes de l'entreprise ?",
-    answers: [
-      { text: "Personne — je suis le seul signataire.", score: 3 },
-      { text: "Mon comptable a un accès limité, mais pas pour les opérations.", score: 2 },
-      { text: "Il y a un co-signataire, mais il n'est pas au courant des opérations.", score: 1 },
-      { text: "Plusieurs personnes autorisées, avec des instructions claires.", score: 0 }
-    ]
-  },
-  {
-    domain: "Remplaçant désigné",
-    text: "Y a-t-il une personne spécifiquement désignée pour vous remplacer temporairement si vous étiez indisponible ?",
-    answers: [
-      { text: "Non, il n'y a personne.", score: 3 },
-      { text: "Quelqu'un pourrait faire le travail, mais ce n'est pas formalisé.", score: 2 },
-      { text: "Il y a une personne identifiée, mais elle n'a pas été préparée pour ce rôle.", score: 1 },
-      { text: "Oui — un remplaçant est désigné, formé et informé.", score: 0 }
-    ]
-  },
-  {
-    domain: "Mandats et procurations",
-    text: "Avez-vous des mandats légaux ou des procurations spécifiquement conçus pour la continuité de votre entreprise — et non seulement pour votre situation personnelle ?",
-    answers: [
-      { text: "Non, rien.", score: 3 },
-      { text: "J'ai un mandat d'inaptitude personnel, mais rien pour l'entreprise.", score: 2 },
-      { text: "Nous avons discuté avec notre notaire, mais rien n'est signé.", score: 1 },
-      { text: "Oui — mandats corporatifs et procurations d'affaires sont en place.", score: 0 }
-    ]
-  },
-  {
     domain: "Résilience opérationnelle",
-    text: "Sans vous, combien de temps votre entreprise peut-elle fonctionner normalement avant que les problèmes deviennent sérieux ?",
+    text: "Combien de temps ton entreprise pourrait-elle fonctionner normalement sans toi avant que les problèmes deviennent vraiment graves ?",
     answers: [
       { text: "Moins de 2 semaines.", score: 3 },
       { text: "2 à 4 semaines.", score: 2 },
@@ -1267,48 +1251,28 @@ const questions = [
     ]
   },
   {
-    domain: "Fournisseurs et partenaires",
-    text: "Vos fournisseurs ou partenaires stratégiques ont-ils des contacts dans votre équipe autres que vous ?",
+    domain: "Relations clients",
+    text: "Est-ce que tes clients les plus importants travaillent et communiquent aussi avec d'autres personnes de ton équipe ?",
     answers: [
-      { text: "Non — toutes les relations stratégiques passent par moi.", score: 3 },
-      { text: "Certains fournisseurs connaissent mon équipe superficiellement.", score: 2 },
-      { text: "Quelques partenaires ont des contacts chez nous, mais ce n'est pas formalisé.", score: 1 },
-      { text: "Oui — toutes les relations critiques sont partagées et documentées.", score: 0 }
+      { text: "Non — ils traitent exclusivement avec moi.", score: 3 },
+      { text: "Rarement — ils préfèrent me parler directement.", score: 2 },
+      { text: "Partiellement — certains connaissent d'autres membres de mon équipe.", score: 1 },
+      { text: "Oui — les relations clients sont partagées et documentées.", score: 0 }
     ]
   },
   {
-    domain: "Accès aux systèmes",
-    text: "Y a-t-il quelqu'un d'autre qui a accès aux systèmes et outils critiques de votre entreprise (TI, logiciels, portails bancaires) ?",
+    domain: "Instructions et protection",
+    text: "Si tu devenais indisponible demain matin, est-ce que les personnes clés autour de toi (famille, équipe, notaire, comptable) sauraient quoi faire et où trouver les documents et instructions dont elles ont besoin ?",
     answers: [
-      { text: "Non — les accès critiques ne sont connus que de moi.", score: 3 },
-      { text: "Certaines personnes ont des accès partiels, mais rien n'est documenté.", score: 2 },
-      { text: "Des accès existent mais ne sont pas gérés ni mis à jour régulièrement.", score: 1 },
-      { text: "Oui — les accès sont documentés, partagés et maintenus à jour.", score: 0 }
+      { text: "Non — personne ne sait vraiment quoi faire ni où trouver quoi que ce soit.", score: 3 },
+      { text: "Ma famille a une idée générale, mais mon équipe et mes partenaires professionnels ne savent rien.", score: 2 },
+      { text: "Certaines personnes ont des informations, mais rien n'est formalisé ni documenté.", score: 1 },
+      { text: "Oui — les personnes clés ont des instructions écrites, claires et facilement accessibles.", score: 0 }
     ]
   },
   {
-    domain: "Instructions aux parties prenantes",
-    text: "Si vous deveniez indisponible demain matin, les personnes clés (famille, équipe, comptable, notaire) sauraient-elles quoi faire et où trouver les informations dont elles ont besoin ?",
-    answers: [
-      { text: "Non — personne ne sait vraiment quoi faire.", score: 3 },
-      { text: "Ma famille a une idée générale, mais mon équipe ne sait rien.", score: 2 },
-      { text: "Mon équipe a quelques informations, mais rien n'est formalisé.", score: 1 },
-      { text: "Oui — les personnes clés ont des instructions écrites, claires et accessibles.", score: 0 }
-    ]
-  },
-  {
-    domain: "Facteurs de risque personnels",
-    text: "Y a-t-il des facteurs dans votre situation qui augmentent votre niveau de risque ? (âge, santé, voyages fréquents, associés, structure sans conseil d'administration)",
-    answers: [
-      { text: "Oui — plusieurs facteurs s'appliquent à ma situation.", score: 3 },
-      { text: "Un ou deux facteurs s'appliquent.", score: 2 },
-      { text: "Pas vraiment, mais j'y pense de temps en temps.", score: 1 },
-      { text: "Non — ma situation est stable et peu risquée.", score: 0 }
-    ]
-  },
-  {
-    domain: "Niveau de préparation perçu",
-    text: "Si on vous demandait aujourd'hui : « Votre entreprise est-elle documentée et protégée contre votre absence imprévue ? » — quelle serait votre réponse honnête ?",
+    domain: "Niveau de préparation",
+    text: "Si on te demandait aujourd'hui : « Ton entreprise est-elle bien organisée et protégée si tu es absent sans prévenir ? » — quelle serait ta réponse la plus honnête ?",
     answers: [
       { text: "Absolument pas — nous n'avons rien préparé.", score: 3 },
       { text: "Probablement pas — j'y ai pensé mais rien n'est en place.", score: 2 },
@@ -1323,48 +1287,38 @@ const zones = [
   {
     min: 0, max: 8,
     color: "#1E7B4B", bgLight: "#D1FAE5", label: "Zone verte — Vigilance",
-    title: "Des bases en place. Des lacunes à combler.",
-    desc: "Vous avez intégré certains réflexes de protection. Il reste probablement des lacunes — mandats d'affaires, documentation partielle, accès non centralisés — mais les fondations existent. Le diagnostic PCA complet vous permettra de valider ce qui tient vraiment sous pression, et de corriger ce qui manque avant que ce soit urgent.",
+    title: "Des bases existent.",
+    desc: "Tu as intégré certains réflexes de protection. Il reste probablement des lacunes — mandats d'affaires, documentation partielle, accès non centralisés — mais les fondations existent. Le diagnostic PCA complet valide ce qui tient vraiment sous pression et identifie les lacunes restantes avant qu'elles coûtent cher.",
     ctaText: "Valider les lacunes — Diagnostic complet",
     ctaHref: "#product",
-    nextTitle: "Valider ce qui tient.",
-    nextDesc: "Même avec de bonnes bases, les lacunes restantes peuvent avoir des conséquences importantes dans un scénario réel. Le diagnostic complet vous donne une image objective — et un plan pour ce qui reste à faire."
+    nextTitle: "Valider ce qui tient vraiment.",
+    nextDesc: "Même avec de bonnes bases, les lacunes restantes peuvent avoir des conséquences importantes dans un scénario réel. Le diagnostic complet te donne une image objective — et un plan pour ce qui reste à faire."
   },
   {
-    min: 9, max: 18,
+    min: 9, max: 16,
     color: "#B8860B", bgLight: "#FEF9C3", label: "Zone jaune — Risque modéré",
-    title: "Des vulnérabilités importantes existent.",
-    desc: "Vous avez identifié des risques réels. Certains processus, accès ou relations critiques ne survivraient pas à votre absence de plus de quelques semaines. Ce n'est pas une urgence immédiate — mais ce le deviendra si rien ne change. Le diagnostic PCA vous donnera une image précise de ces vulnérabilités et un plan pour les adresser.",
+    title: "Des vulnérabilités importantes.",
+    desc: "Ton entreprise ne survivrait pas à une absence de plus de quelques semaines sans conséquences sérieuses. Certains processus, accès ou relations critiques sont exposés. C'est corrigeable — mais ça ne se corrige pas tout seul. Le diagnostic PCA te donne une image précise de ces vulnérabilités et un plan d'action classé par priorité.",
     ctaText: "Voir le diagnostic complet",
     ctaHref: "#product",
     nextTitle: "Transformer la vigilance en plan.",
-    nextDesc: "Vous savez qu'il y a des problèmes. Le diagnostic les documente avec précision et vous livre un plan d'action classé par priorité — pour que vous sachiez exactement quoi faire en premier."
+    nextDesc: "Tu sais qu'il y a des problèmes. Le diagnostic les documente avec précision et te livre les actions à prendre en premier — avant que la situation devienne une urgence."
   },
   {
-    min: 19, max: 28,
-    color: "#C05E00", bgLight: "#FFEDD5", label: "Zone orange — Danger",
-    title: "Un événement imprévu aurait des conséquences sérieuses.",
-    desc: "Votre entreprise a des zones critiques non protégées. Une maladie, un accident, un conflit d'associés déclencherait une série de problèmes opérationnels et financiers en quelques semaines. Ce n'est pas une question de <em>si</em> — c'est une question de <em>quand</em>. Le diagnostic PCA est la prochaine étape — pas pour vous faire peur, mais pour changer concrètement cette réalité.",
-    ctaText: "Prendre rendez-vous",
-    ctaHref: "#",
-    nextTitle: "Agir avant que le risque se concrétise.",
-    nextDesc: "À ce niveau de risque, chaque mois sans plan est un mois de vulnérabilité réelle. Éric peut évaluer votre situation spécifique et vous proposer un plan de match concret dès le premier entretien."
-  },
-  {
-    min: 29, max: 36,
+    min: 17, max: 24,
     color: "#9B1C1C", bgLight: "#FEE2E2", label: "Zone rouge — Critique",
-    title: "Votre entreprise repose entièrement sur vous.",
-    desc: "Aucune documentation. Aucun accès partagé. Aucun plan. Une absence non planifiée est une menace existentielle directe — pour l'opération, pour la valeur, pour ce que vous avez mis des années à construire. Le diagnostic PCA est urgent. Pas pour vous faire peur — pour changer cette réalité en 30 jours.",
-    ctaText: "Prendre rendez-vous",
-    ctaHref: "#",
+    title: "Situation critique.",
+    desc: "Une absence non planifiée est une menace directe sur l'opération et la valeur de ce que tu as bâti. Aucune documentation. Aucun accès partagé. Aucun plan. Ce n'est pas une question de <em>si</em> — c'est une question de <em>quand</em>. Le diagnostic PCA est la prochaine étape — pour changer cette réalité concrètement.",
+    ctaText: "Prendre rendez-vous maintenant",
+    ctaHref: "https://calendar.app.google/KKwa7pSmNCHiebS3A",
     nextTitle: "L'urgence, c'est maintenant.",
-    nextDesc: "À ce niveau, le risque n'est pas hypothétique. Éric Levesque peut vous rencontrer rapidement pour démarrer le diagnostic et établir un plan d'action dans les prochaines semaines."
+    nextDesc: "À ce niveau, le risque n'est pas hypothétique. Éric peut te rencontrer rapidement pour démarrer le diagnostic et établir un plan d'action dans les prochaines semaines."
   }
 ];
 
 // ── STATE ────────────────────────────────────────────────────────
 let currentQ = 0;
-let scores = new Array(12).fill(null);
+let scores = new Array(8).fill(null);
 let selectedScore = null;
 
 // ── INIT QUIZ ────────────────────────────────────────────────────
@@ -1380,8 +1334,8 @@ function renderQuestion(idx) {
   const q = questions[idx];
   selectedScore = null;
 
-  document.getElementById('q-counter').textContent = `Question ${idx + 1} / 12`;
-  document.getElementById('q-bar').style.width = `${((idx) / 12) * 100}%`;
+  document.getElementById('q-counter').textContent = `Question ${idx + 1} / 8`;
+  document.getElementById('q-bar').style.width = `${((idx) / 8) * 100}%`;
   document.getElementById('q-domain').textContent = q.domain;
   document.getElementById('q-text').textContent = q.text;
   document.getElementById('btn-next').disabled = true;
@@ -1431,17 +1385,23 @@ function nextQuestion() {
   if (selectedScore === null) return;
   currentQ++;
 
-  if (currentQ >= 12) {
+  if (currentQ >= 8) {
     showEmailGate();
   } else {
     renderQuestion(currentQ);
   }
 }
 
+// ── EMAIL WHY TOGGLE ─────────────────────────────────────────────
+function toggleEmailWhy() {
+  const box = document.getElementById('email-why-box');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+}
+
 // ── EMAIL GATE ───────────────────────────────────────────────────
 function showEmailGate() {
   const total = scores.reduce((a, b) => a + (b || 0), 0);
-  const prepPct = Math.round((1 - total / 36) * 100);
+  const prepPct = Math.round((1 - total / 24) * 100);
   document.getElementById('phase-quiz').classList.remove('active');
   document.getElementById('phase-quiz').style.display = 'none';
   // Show preparedness % in gate — low number = bad, intuitive
@@ -1461,13 +1421,12 @@ function submitEmail() {
 
   // ── BACKEND — capturer le lead ─────────────────────────────────
   const scoreRaw = scores.reduce((a, b) => a + (b || 0), 0);
-  const scorePct = Math.round((1 - scoreRaw / 36) * 100);
+  const scorePct = Math.round((1 - scoreRaw / 24) * 100);
   const zone     = zones.find(z => scoreRaw >= z.min && scoreRaw <= z.max);
   const domains  = [
-    "Dépendance décisionnelle", "Relations clients", "Documentation des processus",
-    "Accès financier et bancaire", "Remplaçant désigné", "Mandats et procurations",
-    "Résilience opérationnelle", "Fournisseurs et partenaires", "Accès aux systèmes",
-    "Instructions aux parties prenantes", "Facteurs de risque personnels", "Niveau de préparation perçu"
+    "Dépendance décisionnelle", "Accès financier", "Remplaçant désigné",
+    "Documentation des processus", "Résilience opérationnelle", "Relations clients",
+    "Instructions et protection", "Niveau de préparation"
   ];
   const breakdown = domains.map((d, i) => ({ dimension: d, score: scores[i] }));
 
@@ -1493,7 +1452,7 @@ function submitEmail() {
 // ── RESULT ───────────────────────────────────────────────────────
 function showResult(email) {
   const total = scores.reduce((a, b) => a + (b || 0), 0);
-  const prepPct = Math.round((1 - total / 36) * 100);
+  const prepPct = Math.round((1 - total / 24) * 100);
   const zone = zones.find(z => total >= z.min && total <= z.max);
 
   document.getElementById('phase-result').classList.add('active');
@@ -1519,13 +1478,9 @@ function showResult(email) {
   cta.textContent = zone.ctaText;
   cta.style.background = zone.color;
   cta.style.color = '#FFFFFF';
-  if (zone.ctaHref === '#') {
-    cta.href = '#';
-    cta.onclick = function(e) { e.preventDefault(); openModal(); };
-  } else {
-    cta.href = zone.ctaHref;
-    cta.onclick = null;
-  }
+  cta.href = zone.ctaHref;
+  cta.onclick = null;
+  cta.target = zone.ctaHref.startsWith('http') ? '_blank' : '_self';
 
   // Next step
   document.getElementById('r-next-title').textContent = zone.nextTitle;
@@ -1533,10 +1488,9 @@ function showResult(email) {
 
   // Breakdown — tag grid, grouped by risk level
   const dims = [
-    "Décisions", "Relations clients", "Documentation",
-    "Accès financiers", "Remplaçant", "Mandats légaux",
-    "Résilience", "Fournisseurs", "Accès systèmes",
-    "Parties prenantes", "Risque personnel", "Conscience"
+    "Décisions", "Accès financier", "Remplaçant",
+    "Documentation", "Résilience", "Relations clients",
+    "Instructions", "Préparation"
   ];
 
   const levels = [
