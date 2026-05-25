@@ -639,6 +639,180 @@ body {
 }
 .btn-agir:hover { background: var(--gold-lt); transform: translateY(-2px); }
 
+/* ── MINI-RAPPORT ─────────────────────────────────────────────────── */
+.report-page {
+  max-width: 720px;
+  margin: 48px auto;
+  border: 1px solid var(--border);
+  background: var(--white);
+}
+.rp-header {
+  background: var(--navy);
+  padding: 26px 40px 20px;
+  border-bottom: 2px solid var(--gold);
+}
+.rp-logo {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  display: block;
+}
+.rp-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0 0 4px;
+}
+.rp-header p { font-size: 11px; color: rgba(255,255,255,0.4); margin: 0; }
+.rp-body { padding: 32px 40px 36px; }
+.rp-section-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
+.score-hero-block {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--grey-lt);
+  border: 1px solid var(--border);
+  padding: 20px 24px;
+  margin-bottom: 28px;
+}
+.score-circle-big {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cadran-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.cadran-card {
+  background: var(--grey-lt);
+  border: 1px solid var(--border);
+  padding: 20px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cadran-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-top: 8px;
+  text-align: center;
+}
+.cadran-subdesc {
+  font-size: 11px;
+  color: var(--grey);
+  text-align: center;
+  margin: 4px 0 10px;
+  line-height: 1.4;
+}
+.cadran-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+.cadran-tag {
+  font-size: 10px;
+  color: var(--grey);
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+}
+.cadran-zone {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+.q-report-row {
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+  display: grid;
+  grid-template-columns: 24px 12px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+.q-report-row:last-child { border-bottom: none; }
+.qr-num { font-size: 10px; color: var(--grey); padding-top: 3px; }
+.qr-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
+.qr-dot.vert  { background: var(--green); }
+.qr-dot.jaune { background: var(--yellow); }
+.qr-dot.rouge { background: var(--red); }
+.qr-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.qr-comment { font-size: 12px; color: var(--grey-txt); line-height: 1.65; }
+.offer-navy { background: var(--navy); padding: 28px 28px 24px; margin-bottom: 20px; border-bottom: 2px solid var(--gold); }
+.offer-eyebrow {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  display: block;
+}
+.offer-navy h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0 0 12px;
+}
+.offer-navy p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.65; margin: 0 0 8px; }
+.offer-price { font-size: 32px; font-weight: 700; color: var(--gold); margin: 16px 0 2px; }
+.offer-price-sub { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 1px; }
+.offer-includes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 18px; }
+.offer-include {
+  background: rgba(255,255,255,0.07);
+  padding: 10px 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+}
+.offer-include::before { content: '✓'; color: var(--gold); margin-right: 8px; font-weight: 600; }
+.btn-rdv {
+  display: block;
+  background: var(--gold);
+  color: var(--navy);
+  text-align: center;
+  padding: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 20px;
+  font-family: 'Inter', sans-serif;
+  transition: background .2s;
+}
+.btn-rdv:hover { background: var(--gold-lt); }
+.rp-footer {
+  font-size: 11px;
+  color: var(--grey);
+  text-align: center;
+  margin-top: 18px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .report-page { margin: 16px; }
+  .rp-body { padding: 24px 20px 28px; }
+  .cadran-grid { grid-template-columns: 1fr; }
+  .offer-includes { grid-template-columns: 1fr; }
+}
+
 /* ── MODAL ── */
 .modal-overlay {
   display: none;
@@ -1061,40 +1235,59 @@ footer span { font-size: 11px; color: var(--grey); letter-spacing: 1px; }
      PHASE 3 — RESULT
 ══════════════════════════════════════════════════════════════════ -->
 <div id="phase-result">
-  <div class="result-hero">
 
-    <div>
-      <div class="result-zone-badge" id="r-badge"></div>
-      <div class="gauge-wrap" id="r-gauge"></div>
-      <div class="gauge-center-text">
-        <span class="gauge-pct-val" id="r-score-pct"></span>
-        <span class="gauge-pct-sub">préparation</span>
-      </div>
-      <h2 class="result-title" id="r-title"></h2>
-      <p class="result-description" id="r-desc"></p>
-      <a class="btn-result-cta" id="r-cta"></a>
+  <!-- Page 1 — Score global -->
+  <div class="report-page">
+    <div class="rp-header">
+      <span class="rp-logo">Finexit · Diagnostic PCA</span>
+      <h2>Résultat de ton évaluation</h2>
+      <p id="rp-date"></p>
     </div>
-
-    <div>
-      <div class="result-breakdown">
-        <span class="breakdown-title">Votre résultat par dimension</span>
-        <div id="r-breakdown"></div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="result-agir">
-    <div>
-      <h2 id="r-next-title">La prochaine étape.</h2>
-      <p id="r-next-desc">Le diagnostic PCA complet prend ce test comme point de départ et documente chaque lacune avec un plan d'action concret, livré lors d'une séance de présentation personnalisée.</p>
-    </div>
-    <div class="agir-action">
-      <button class="btn-agir" onclick="openModal()">Régler mon problème</button>
+    <div class="rp-body">
+      <div class="score-hero-block" id="r-hero"></div>
+      <span class="rp-section-label">Résultats par dimension</span>
+      <div class="cadran-grid" id="r-cadrans"></div>
     </div>
   </div>
 
-  <section id="about-result"><!-- about section repeats below --></section>
+  <!-- Page 2 — Analyse par dimension -->
+  <div class="report-page">
+    <div class="rp-header">
+      <span class="rp-logo">Finexit · Diagnostic PCA</span>
+      <h2>Analyse par dimension</h2>
+      <p>Rouge = critique &nbsp;·&nbsp; Jaune = vulnérable &nbsp;·&nbsp; Vert = solide</p>
+    </div>
+    <div class="rp-body">
+      <div id="r-questions"></div>
+    </div>
+  </div>
+
+  <!-- Page 3 — Offre de service -->
+  <div class="report-page">
+    <div class="rp-header">
+      <span class="rp-logo">Finexit · Diagnostic PCA</span>
+      <h2>La prochaine étape</h2>
+      <p>Ce rapport identifie le risque. Le diagnostic complet le résout.</p>
+    </div>
+    <div class="rp-body">
+      <div class="offer-navy">
+        <span class="offer-eyebrow">Diagnostic complet PCA</span>
+        <h3>D'un résultat à un plan d'action</h3>
+        <p>Le diagnostic complet documente chaque lacune identifiée, valide ce qui tient vraiment sous pression, et te remet un plan d'action priorisé sur 30/60/90 jours — avec une séance de présentation incluse.</p>
+        <div class="offer-price">3 000 $ <span style="font-size:16px;font-weight:300;color:rgba(255,255,255,0.35)">CAD</span></div>
+        <div class="offer-price-sub">Investissement unique &nbsp;·&nbsp; Séance de présentation incluse</div>
+        <div class="offer-includes">
+          <div class="offer-include">Rapport complet structuré</div>
+          <div class="offer-include">Plan 30/60/90 jours</div>
+          <div class="offer-include">Séance de présentation</div>
+          <div class="offer-include">Priorités documentées</div>
+        </div>
+      </div>
+      <a class="btn-rdv" href="https://calendar.app.google/KKwa7pSmNCHiebS3A" target="_blank">Prendre rendez-vous pour en discuter</a>
+      <p class="rp-footer">Ou réponds directement à ce courriel.<br>Éric Lévesque &nbsp;·&nbsp; Value Advisor &nbsp;·&nbsp; Finexit &nbsp;·&nbsp; el@finexit.ca</p>
+    </div>
+  </div>
+
 </div>
 
 <!-- ══════════════════════════════════════════════════════════════════
@@ -1456,70 +1649,113 @@ function showResult(email) {
   const zone = zones.find(z => total >= z.min && total <= z.max);
 
   document.getElementById('phase-result').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Badge
-  const badge = document.getElementById('r-badge');
-  badge.style.background = zone.bgLight;
-  badge.style.color = zone.color;
-  badge.style.border = `1px solid ${zone.color}`;
-  badge.textContent = zone.label;
+  // ── Page 1 — Hero ──────────────────────────────────────────────
+  document.getElementById('rp-date').textContent =
+    new Date().toLocaleDateString('fr-CA', { year:'numeric', month:'long', day:'numeric' }) + ' · Confidentiel';
 
-  // Gauge + score %
-  document.getElementById('r-gauge').innerHTML = buildGauge(prepPct, zone.color);
-  const scorePct = document.getElementById('r-score-pct');
-  scorePct.textContent = prepPct + '%';
-  scorePct.style.color = zone.color;
+  document.getElementById('r-hero').innerHTML = `
+    <div class="score-circle-big" style="background:${zone.bgLight}">
+      <span style="font-size:20px;font-weight:700;color:${zone.color};line-height:1">${prepPct}%</span>
+      <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:${zone.color};margin-top:3px">Score</span>
+    </div>
+    <div>
+      <span style="display:inline-block;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+        padding:3px 12px;background:${zone.bgLight};color:${zone.color};margin-bottom:8px">${zone.label}</span>
+      <div style="font-size:15px;font-weight:600;color:var(--navy);margin-bottom:5px">${zone.title}</div>
+      <div style="font-size:12px;color:var(--grey);line-height:1.6">${zone.desc.replace(/<[^>]+>/g,'')}</div>
+    </div>`;
 
-  document.getElementById('r-title').textContent = zone.title;
-  document.getElementById('r-desc').innerHTML = zone.desc;
-
-  // CTA
-  const cta = document.getElementById('r-cta');
-  cta.textContent = zone.ctaText;
-  cta.style.background = zone.color;
-  cta.style.color = '#FFFFFF';
-  cta.href = zone.ctaHref;
-  cta.onclick = null;
-  cta.target = zone.ctaHref.startsWith('http') ? '_blank' : '_self';
-
-  // Next step
-  document.getElementById('r-next-title').textContent = zone.nextTitle;
-  document.getElementById('r-next-desc').textContent = zone.nextDesc;
-
-  // Breakdown — tag grid, grouped by risk level
-  const dims = [
-    "Décisions", "Accès financier", "Remplaçant",
-    "Documentation", "Résilience", "Relations clients",
-    "Instructions", "Préparation"
+  // ── Cadrans ────────────────────────────────────────────────────
+  const groups = [
+    { name:'Direction',  subdesc:'Autonomie décisionnelle et relève',    indices:[0,2,7], tags:['Décisions','Remplaçant','Préparation'] },
+    { name:'Opérations', subdesc:'Processus et résilience interne',       indices:[3,4],   tags:['Documentation','Équipe'] },
+    { name:'Clients',    subdesc:'Dépendance aux relations personnelles',  indices:[5],     tags:['Relations clients'] },
+    { name:'Protection', subdesc:'Couverture financière et légale',        indices:[1,6],   tags:['Accès financier','Instructions'] },
   ];
 
-  const levels = [
-    { key: 'critique', score: 3, label: 'Critique',     color: '#9B1C1C' },
-    { key: 'eleve',    score: 2, label: 'Élevé',        color: '#C05E00' },
-    { key: 'modere',   score: 1, label: 'Modéré',       color: '#B8860B' },
-    { key: 'protege',  score: 0, label: 'Sous contrôle', color: '#1E7B4B' },
-  ];
+  function buildCadranSVG(pct, color) {
+    // Semicircle M12,66 A48,48 0 0,1 108,66 — arc length π×48≈150.8
+    const filled = (pct / 100) * 150.8;
+    return `<svg viewBox="0 0 120 72" width="120" height="72">
+      <path d="M12,66 A48,48 0 0,1 108,66" fill="none" stroke="#E2E2E2" stroke-width="10" stroke-linecap="round"/>
+      <path d="M12,66 A48,48 0 0,1 108,66" fill="none" stroke="${color}" stroke-width="10" stroke-linecap="round"
+        stroke-dasharray="${filled.toFixed(1)} 150.8"/>
+      <text x="60" y="60" text-anchor="middle" font-family="Inter,sans-serif"
+        font-size="18" font-weight="600" fill="${color}">${Math.round(pct)}%</text>
+    </svg>`;
+  }
 
-  const breakdown = document.getElementById('r-breakdown');
-  breakdown.innerHTML = '';
-
-  // Build columns container
-  const colsDiv = document.createElement('div');
-  colsDiv.className = 'risk-columns';
-
-  levels.forEach(lvl => {
-    const tagged = dims.filter((_, i) => scores[i] === lvl.score);
-    if (tagged.length === 0) return;
-
-    const colDiv = document.createElement('div');
-    colDiv.innerHTML = `<span class="risk-col-label" style="color:${lvl.color}">${lvl.label} — ${tagged.length} dimension${tagged.length > 1 ? 's' : ''}</span>
-      <div class="risk-tags">${tagged.map(d => `<span class="risk-tag ${lvl.key}">${d}</span>`).join('')}</div>`;
-    colsDiv.appendChild(colDiv);
+  const cadransEl = document.getElementById('r-cadrans');
+  cadransEl.innerHTML = '';
+  groups.forEach(g => {
+    const gPct = Math.round(g.indices.reduce((s,i) => s + (1 - (scores[i]||0)/3), 0) / g.indices.length * 100);
+    const gColor = gPct > 66 ? 'var(--green)' : gPct > 33 ? 'var(--yellow)' : 'var(--red)';
+    const gLabel = gPct > 66 ? 'Vert · Solide' : gPct > 33 ? 'Jaune · Vulnérable' : 'Rouge · Critique';
+    const card = document.createElement('div');
+    card.className = 'cadran-card';
+    card.innerHTML = `
+      ${buildCadranSVG(gPct, gColor)}
+      <div class="cadran-name">${g.name}</div>
+      <div class="cadran-subdesc">${g.subdesc}</div>
+      <div class="cadran-tags">${g.tags.map(t=>`<span class="cadran-tag">${t}</span>`).join('')}</div>
+      <div class="cadran-zone" style="color:${gColor}">${gLabel}</div>`;
+    cadransEl.appendChild(card);
   });
 
-  breakdown.appendChild(colsDiv);
+  // ── Page 2 — Commentaires par question ─────────────────────────
+  const qData = [
+    { title:'Dépendance décisionnelle',
+      vert: "Ton entreprise peut fonctionner sans toi pendant quelques semaines. C'est une base solide — mais une base n'est pas un plan.",
+      jaune:"Ton absence ralentirait les opérations. Certaines décisions attendraient ton retour. En cas d'absence prolongée, ça devient un problème réel.",
+      rouge:"Ton entreprise tourne autour de toi. Si tu deviens inaccessible, elle s'arrête. C'est la vulnérabilité la plus directe sur la valeur de ce que tu as bâti." },
+    { title:'Accès financier',
+      vert: "L'accès aux finances ne dépend pas de ta présence. Tes fournisseurs peuvent être payés, les opérations continuent.",
+      jaune:"L'accès financier est possible mais crée des frictions. En situation d'urgence, ce délai peut se transformer en crise de liquidités.",
+      rouge:"Personne ne peut payer tes fournisseurs si tu es inaccessible. Une absence de quelques semaines peut suffire à manquer des échéances critiques." },
+    { title:'Remplaçant désigné',
+      vert: "Tu as identifié quelqu'un capable de te remplacer temporairement. La prochaine étape : formaliser ce rôle par écrit et le tester.",
+      jaune:"Il y a peut-être quelqu'un, mais ce n'est ni désigné formellement, ni préparé. En cas d'urgence, l'improvisation prend le dessus.",
+      rouge:"Il n'y a personne pour te remplacer. Si tu disparais — même temporairement — ton équipe est sans direction et tes clients sans interlocuteur." },
+    { title:'Documentation des processus',
+      vert: "Tes processus critiques existent sous une forme que quelqu'un d'autre peut suivre. Assure-toi qu'ils sont maintenus à jour.",
+      jaune:"La documentation existe partiellement. Des trous importants subsistent — surtout pour les situations les plus critiques.",
+      rouge:"Les processus sont dans ta tête. Si tu pars, ils partent avec toi. C'est une dépendance invisible jusqu'au moment où elle coûte cher." },
+    { title:'Résilience opérationnelle',
+      vert: "Ton équipe peut gérer les opérations sans toi. Tu as construit quelque chose qui ne dépend pas de ta présence quotidienne.",
+      jaune:"Ton équipe gère le quotidien, mais les décisions importantes restent bloquées sans toi. En cas d'absence prolongée, les irritants deviennent des crises.",
+      rouge:"Tes employés ne savent pas quoi faire sans toi. L'absence crée une paralysie immédiate — ce n'est pas une question de compétence, mais de structure." },
+    { title:'Relations clients',
+      vert: "Tes clients sont liés à ton entreprise, pas à toi personnellement. La relation survivrait à ton départ.",
+      jaune:"Certains clients clés sont liés à ta relation personnelle. En cas d'absence prolongée, ce lien devient un risque de rétention.",
+      rouge:"Tes clients achètent toi, pas ton entreprise. Si tu pars, ils partent. C'est la vulnérabilité qui réduirait le plus la valeur de ce que tu as bâti." },
+    { title:'Instructions et protection',
+      vert: "Les dispositions légales et les instructions sont en place — testament, procurations, mandats d'affaires. Ton entourage sait quoi faire.",
+      jaune:"Des éléments sont en place, mais des lacunes subsistent — mandats incomplets, testament non mis à jour, instructions d'affaires non documentées.",
+      rouge:"Personne ne sait quoi faire si tu devenais invalide ou décédais. Ce vide peut entraîner des conflits entre héritiers et le gel des actifs." },
+    { title:'Niveau de préparation',
+      vert: "Tu te sens préparé — et les réponses précédentes tendent à le confirmer. Le diagnostic complet validera ce qui tient vraiment sous pression.",
+      jaune:"Tu as l'impression d'être partiellement préparé, mais tu sens qu'il manque quelque chose. Tu as raison — il y a des angles morts importants.",
+      rouge:"Tu sais que tu n'es pas préparé. Ce diagnostic est la première étape pour mesurer l'étendue réelle du risque et décider quoi corriger en priorité." },
+  ];
 
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const qEl = document.getElementById('r-questions');
+  qEl.innerHTML = '';
+  qData.forEach((q, i) => {
+    const s = scores[i] || 0;
+    const level = s === 0 ? 'vert' : s === 1 ? 'jaune' : 'rouge';
+    const row = document.createElement('div');
+    row.className = 'q-report-row';
+    row.innerHTML = `
+      <span class="qr-num">0${i+1}</span>
+      <div class="qr-dot ${level}"></div>
+      <div>
+        <div class="qr-title">${q.title}</div>
+        <div class="qr-comment">${q[level]}</div>
+      </div>`;
+    qEl.appendChild(row);
+  });
 }
 
 // ── GAUGE ─────────────────────────────────────────────────────────
