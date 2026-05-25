@@ -1239,7 +1239,7 @@ footer span { font-size: 11px; color: var(--grey); letter-spacing: 1px; }
   <!-- Page 1 — Score global -->
   <div class="report-page">
     <div class="rp-header">
-      <span class="rp-logo">Finexit · Diagnostic PCA</span>
+      <span class="rp-logo">Finexit · Plan de Continuité des Affaires</span>
       <h2>Résultat de ton évaluation</h2>
       <p id="rp-date"></p>
     </div>
@@ -1253,7 +1253,7 @@ footer span { font-size: 11px; color: var(--grey); letter-spacing: 1px; }
   <!-- Page 2 — Analyse par dimension -->
   <div class="report-page">
     <div class="rp-header">
-      <span class="rp-logo">Finexit · Diagnostic PCA</span>
+      <span class="rp-logo">Finexit · Plan de Continuité des Affaires</span>
       <h2>Analyse par dimension</h2>
       <p>Rouge = critique &nbsp;·&nbsp; Jaune = vulnérable &nbsp;·&nbsp; Vert = solide</p>
     </div>
@@ -1265,17 +1265,17 @@ footer span { font-size: 11px; color: var(--grey); letter-spacing: 1px; }
   <!-- Page 3 — Offre de service -->
   <div class="report-page">
     <div class="rp-header">
-      <span class="rp-logo">Finexit · Diagnostic PCA</span>
+      <span class="rp-logo">Finexit · Plan de Continuité des Affaires</span>
       <h2>La prochaine étape</h2>
       <p>Ce rapport identifie le risque. Le diagnostic complet le résout.</p>
     </div>
     <div class="rp-body">
       <div class="offer-navy">
-        <span class="offer-eyebrow">Diagnostic complet PCA</span>
+        <span class="offer-eyebrow">Plan de Continuité des Affaires — Finexit</span>
         <h3>D'un résultat à un plan d'action</h3>
-        <p>Le diagnostic complet documente chaque lacune identifiée, valide ce qui tient vraiment sous pression, et te remet un plan d'action priorisé sur 30/60/90 jours — avec une séance de présentation incluse.</p>
+        <p>Le Plan de Continuité des Affaires complet documente chaque lacune identifiée, valide ce qui tient vraiment sous pression, et te remet un plan d'action priorisé sur 30/60/90 jours — avec une séance de présentation incluse.</p>
         <div class="offer-price">3 000 $ <span style="font-size:16px;font-weight:300;color:rgba(255,255,255,0.35)">CAD</span></div>
-        <div class="offer-price-sub">Investissement unique &nbsp;·&nbsp; Séance de présentation incluse</div>
+        <div class="offer-price-sub">Investissement unique &nbsp;·&nbsp; Séance de présentation incluse &nbsp;·&nbsp; Financement disponible*</div>
         <div class="offer-includes">
           <div class="offer-include">Rapport complet structuré</div>
           <div class="offer-include">Plan 30/60/90 jours</div>
@@ -1283,8 +1283,13 @@ footer span { font-size: 11px; color: var(--grey); letter-spacing: 1px; }
           <div class="offer-include">Priorités documentées</div>
         </div>
       </div>
-      <a class="btn-rdv" href="https://calendar.app.google/KKwa7pSmNCHiebS3A" target="_blank">Prendre rendez-vous pour en discuter</a>
-      <p class="rp-footer">Ou réponds directement à ce courriel.<br>Éric Lévesque &nbsp;·&nbsp; Value Advisor &nbsp;·&nbsp; Finexit &nbsp;·&nbsp; el@finexit.ca</p>
+      <button class="btn-rdv" onclick="openModal()" style="border:none;cursor:pointer;width:100%;font-size:12px">Commander maintenant — 3 000 $ CAD</button>
+      <a class="btn-rdv" href="https://calendar.app.google/KKwa7pSmNCHiebS3A" target="_blank"
+        style="display:block;margin-top:8px;background:transparent;color:var(--navy);border:1px solid var(--border);font-size:11px;letter-spacing:1.5px">
+        Prendre rendez-vous d'abord
+      </a>
+      <p class="rp-footer">* Financement selon conditions d'admissibilité — demande les détails lors de ton premier entretien.<br>
+      Éric Lévesque &nbsp;·&nbsp; Value Advisor &nbsp;·&nbsp; Finexit &nbsp;·&nbsp; el@finexit.ca</p>
     </div>
   </div>
 
@@ -1367,8 +1372,8 @@ footer span { font-size: 11px; color: var(--grey); letter-spacing: 1px; }
 <div class="modal-overlay" id="modal-overlay" onclick="closeModalOnBg(event)">
   <div class="modal-card">
     <button class="modal-close" onclick="closeModal()">✕</button>
-    <span class="modal-eyebrow">Diagnostic PCA complet</span>
-    <div class="modal-title">Plan de Continuité des Affaires</div>
+    <span class="modal-eyebrow">Finexit · Plan de Continuité des Affaires</span>
+    <div class="modal-title">Commander le PCA complet</div>
     <hr class="modal-sep">
     <ul class="modal-includes">
       <li>Questionnaire structuré approfondi</li>
@@ -1481,7 +1486,7 @@ const zones = [
     min: 0, max: 8,
     color: "#1E7B4B", bgLight: "#D1FAE5", label: "Zone verte — Vigilance",
     title: "Des bases existent.",
-    desc: "Tu as intégré certains réflexes de protection. Il reste probablement des lacunes — mandats d'affaires, documentation partielle, accès non centralisés — mais les fondations existent. Le diagnostic PCA complet valide ce qui tient vraiment sous pression et identifie les lacunes restantes avant qu'elles coûtent cher.",
+    desc: "Tu as intégré certains réflexes de protection. Il reste probablement des lacunes — mandats d'affaires, documentation partielle, accès non centralisés — mais les fondations existent.",
     ctaText: "Valider les lacunes — Diagnostic complet",
     ctaHref: "#product",
     nextTitle: "Valider ce qui tient vraiment.",
@@ -1491,7 +1496,7 @@ const zones = [
     min: 9, max: 16,
     color: "#B8860B", bgLight: "#FEF9C3", label: "Zone jaune — Risque modéré",
     title: "Des vulnérabilités importantes.",
-    desc: "Ton entreprise ne survivrait pas à une absence de plus de quelques semaines sans conséquences sérieuses. Certains processus, accès ou relations critiques sont exposés. C'est corrigeable — mais ça ne se corrige pas tout seul. Le diagnostic PCA te donne une image précise de ces vulnérabilités et un plan d'action classé par priorité.",
+    desc: "Ton entreprise ne survivrait pas à une absence de plus de quelques semaines sans conséquences sérieuses. Certains processus, accès ou relations critiques sont exposés. C'est corrigeable — mais ça ne se corrige pas tout seul.",
     ctaText: "Voir le diagnostic complet",
     ctaHref: "#product",
     nextTitle: "Transformer la vigilance en plan.",
@@ -1501,7 +1506,7 @@ const zones = [
     min: 17, max: 24,
     color: "#9B1C1C", bgLight: "#FEE2E2", label: "Zone rouge — Critique",
     title: "Situation critique.",
-    desc: "Une absence non planifiée est une menace directe sur l'opération et la valeur de ce que tu as bâti. Aucune documentation. Aucun accès partagé. Aucun plan. Ce n'est pas une question de <em>si</em> — c'est une question de <em>quand</em>. Le diagnostic PCA est la prochaine étape — pour changer cette réalité concrètement.",
+    desc: "Une absence non planifiée est une menace directe sur l'opération et la valeur de ce que tu as bâti. Aucune documentation. Aucun accès partagé. Aucun plan. Ce n'est pas une question de <em>si</em> — c'est une question de <em>quand</em>.",
     ctaText: "Prendre rendez-vous maintenant",
     ctaHref: "https://calendar.app.google/KKwa7pSmNCHiebS3A",
     nextTitle: "L'urgence, c'est maintenant.",
@@ -1649,6 +1654,8 @@ function showResult(email) {
   const zone = zones.find(z => total >= z.min && total <= z.max);
 
   document.getElementById('phase-result').classList.add('active');
+  document.getElementById('product').style.display = 'none';
+  document.getElementById('about').style.display = 'none';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   // ── Page 1 — Hero ──────────────────────────────────────────────
