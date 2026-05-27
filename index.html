@@ -230,6 +230,24 @@
       .btn-primary:hover { background: var(--cyan-soft); }
       .btn-primary .arrow { transition: transform 0.15s; }
       .btn-primary:hover .arrow { transform: translateX(3px); }
+      .btn-outline-cyan {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: transparent;
+        color: var(--cyan);
+        border: 1.5px solid var(--cyan);
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        padding: 12px 22px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.15s, color 0.15s;
+      }
+      .btn-outline-cyan:hover { background: var(--cyan); color: var(--navy-deep); }
       .link-secondary {
         font-size: 14px;
         color: var(--gray-strong);
@@ -1384,16 +1402,14 @@
                 <li><span class="tick">→</span>Séance de présentation</li>
                 <li><span class="tick">→</span>Priorités documentées</li>
               </ul>
-              <button class="btn-primary" onclick="openModal()">Commander — 3 000 $ CAD <span class="arrow">→</span></button>
+              <button class="btn-primary" onclick="window.location.href='#phase-quiz'; startQuiz();">Commencer le diagnostic <span class="arrow">→</span></button>
             </div>
-            <div class="price-block">
-              <div style="font-size:12px;color:var(--cyan);letter-spacing:0.14em;text-transform:uppercase;font-weight:600;">Investissement unique</div>
-              <div class="price">3&nbsp;000&nbsp;$</div>
-              <div class="price-meta">CAD · financement disponible*</div>
-              <div style="border-top:1px solid var(--line);margin-top:24px;padding-top:18px;font-size:13px;color:var(--gray);line-height:1.5;">
-                Tu veux en parler avant de décider ?<br>
-                <a href="https://calendar.app.google/KKwa7pSmNCHiebS3A" target="_blank" style="color:var(--cyan);font-weight:500;">Réserve 20 minutes →</a>
+            <div class="price-block" style="justify-content:center;gap:20px;">
+              <div style="font-size:13px;color:var(--gray);line-height:1.6;border-left:2px solid var(--cyan);padding-left:14px;">
+                Le tarif est présenté avec ton résultat — pour qu'il soit mis en contexte avec ce qu'on a trouvé.
               </div>
+              <a href="https://calendar.app.google/KKwa7pSmNCHiebS3A" target="_blank" class="btn-outline-cyan">Réserve 20 minutes <span class="arrow">→</span></a>
+              <div style="font-size:11px;color:var(--gray);letter-spacing:0.08em;text-transform:uppercase;opacity:0.7;">Investissement unique · financement disponible</div>
             </div>
           </div>
         </div>
