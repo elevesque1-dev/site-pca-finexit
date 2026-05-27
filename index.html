@@ -960,9 +960,10 @@
     flex-shrink: 0;
     margin-top: 4px;
   }
-  .qr-dot.vert  { background: #1E7B4B; }
-  .qr-dot.jaune { background: #B8860B; }
-  .qr-dot.rouge { background: #9B1C1C; }
+  .qr-dot.vert   { background: #22C55E; }
+  .qr-dot.jaune1 { background: #EAB308; }
+  .qr-dot.jaune2 { background: #EAB308; }
+  .qr-dot.rouge  { background: #EF4444; }
   .qr-title {
     font-size: 13px;
     font-weight: 600;
@@ -1549,6 +1550,7 @@
         <h2>La prochaine étape</h2>
         <p>Ce rapport identifie le risque. Le PCA complet le résout.</p>
       </div>
+      <div id="r-wrapup" style="margin-bottom:40px;padding:24px 28px;background:rgba(0,180,216,0.05);border-left:3px solid var(--cyan);border-radius:0 8px 8px 0;font-size:15px;color:#ccd6f6;line-height:1.7;"></div>
       <div class="offer-result">
         <div class="offer-eyebrow">Plan de Continuité des Affaires — Finexit</div>
         <h3>D'un résultat à un plan d'action</h3>
@@ -1752,26 +1754,83 @@ function showResult(email) {
   });
 
   const qData = [
-    { title:'Dépendance décisionnelle',    vert:"Ton entreprise peut fonctionner sans toi pendant quelques semaines. C'est une base solide — mais une base n'est pas un plan.", jaune:"Ton absence ralentirait les opérations. Certaines décisions attendraient ton retour. En cas d'absence prolongée, ça devient un problème réel.", rouge:"Ton entreprise tourne autour de toi. Si tu deviens inaccessible, elle s'arrête. C'est la vulnérabilité la plus directe sur la valeur de ce que tu as bâti." },
-    { title:'Accès financier',             vert:"L'accès aux finances ne dépend pas de ta présence. Tes fournisseurs peuvent être payés, les opérations continuent.", jaune:"L'accès financier est possible mais crée des frictions. En situation d'urgence, ce délai peut se transformer en crise de liquidités.", rouge:"Personne ne peut payer tes fournisseurs si tu es inaccessible. Une absence de quelques semaines peut suffire à manquer des échéances critiques." },
-    { title:'Remplaçant désigné',          vert:"Tu as identifié quelqu'un capable de te remplacer temporairement. La prochaine étape : formaliser ce rôle par écrit et le tester.", jaune:"Il y a peut-être quelqu'un, mais ce n'est ni désigné formellement, ni préparé. En cas d'urgence, l'improvisation prend le dessus.", rouge:"Il n'y a personne pour te remplacer. Si tu disparais — même temporairement — ton équipe est sans direction et tes clients sans interlocuteur." },
-    { title:'Documentation des processus', vert:"Tes processus critiques existent sous une forme que quelqu'un d'autre peut suivre. Assure-toi qu'ils sont maintenus à jour.", jaune:"La documentation existe partiellement. Des trous importants subsistent — surtout pour les situations les plus critiques.", rouge:"Les processus sont dans ta tête. Si tu pars, ils partent avec toi. C'est une dépendance invisible jusqu'au moment où elle coûte cher." },
-    { title:'Résilience opérationnelle',   vert:"Ton équipe peut gérer les opérations sans toi. Tu as construit quelque chose qui ne dépend pas de ta présence quotidienne.", jaune:"Ton équipe gère le quotidien, mais les décisions importantes restent bloquées sans toi. En cas d'absence prolongée, les irritants deviennent des crises.", rouge:"Tes employés ne savent pas quoi faire sans toi. L'absence crée une paralysie immédiate — ce n'est pas une question de compétence, mais de structure." },
-    { title:'Relations clients',           vert:"Tes clients sont liés à ton entreprise, pas à toi personnellement. La relation survivrait à ton départ.", jaune:"Certains clients clés sont liés à ta relation personnelle. En cas d'absence prolongée, ce lien devient un risque de rétention.", rouge:"Tes clients achètent toi, pas ton entreprise. Si tu pars, ils partent. C'est la vulnérabilité qui réduirait le plus la valeur de ce que tu as bâti." },
-    { title:'Instructions et protection',  vert:"Les dispositions légales et les instructions sont en place. Ton entourage sait quoi faire.", jaune:"Des éléments sont en place, mais des lacunes subsistent — mandats incomplets, testament non mis à jour, instructions d'affaires non documentées.", rouge:"Personne ne sait quoi faire si tu devenais invalide ou décédais. Ce vide peut entraîner des conflits entre héritiers et le gel des actifs." },
-    { title:'Niveau de préparation',       vert:"Tu te sens préparé — et les réponses précédentes tendent à le confirmer. Le diagnostic complet validera ce qui tient vraiment sous pression.", jaune:"Tu as l'impression d'être partiellement préparé, mais tu sens qu'il manque quelque chose. Tu as raison — il y a des angles morts importants.", rouge:"Tu sais que tu n'es pas préparé. Ce diagnostic est la première étape pour mesurer l'étendue réelle du risque et décider quoi corriger en priorité." },
+    {
+      title:'Dépendance décisionnelle',
+      vert:   "Ton entreprise peut fonctionner sans toi pendant quelques semaines. C'est une base solide — mais une base n'est pas un plan. Le vrai test : est-ce que cette structure tiendrait aussi sous pression réelle — urgence médicale, conflit, absence forcée prolongée?",
+      jaune1: "L'entreprise ralentit, mais elle ne s'arrête pas. C'est mieux — mais le ralentissement a un coût réel. Des décisions importantes restent en attente. Des opportunités passent. Si l'absence se prolonge, les irritants deviennent des crises.",
+      jaune2: "La majorité des décisions bloquerait. Ce n'est pas un ralentissement — c'est presque un arrêt. À très court terme, les employés perdent le fil directeur. Les clients perdent leur contact. L'entreprise perd de la vitesse sans pouvoir en retrouver. La différence entre 'presque arrêté' et 'complètement arrêté' est plus mince qu'elle n'y paraît.",
+      rouge:  "Ton entreprise tourne autour de toi. Si tu deviens inaccessible, elle s'arrête — pas ralentit, s'arrête. Les employés n'ont pas l'autorité pour décider. Les clients n'ont plus d'interlocuteur. En quelques semaines, les deux partent chercher ailleurs. Ce n'est pas une question de compétence de ton équipe. C'est une question de structure qui n'existe pas encore."
+    },
+    {
+      title:'Accès financier',
+      vert:   "L'accès aux finances ne dépend pas de ta présence. Les paies sortent, le loyer se paye, les remboursements se font. Ce n'est pas trivial — c'est une des seules protections qui s'active automatiquement quand tout le reste est paralysé.",
+      jaune1: "Il y a un co-signataire — mais va-t-il réellement agir? Même avec accès aux comptes, décider de signer un chèque pour quelqu'un d'autre — sans instructions écrites, sans mandat formalisé — c'est demander à cette personne de prendre une responsabilité financière sans filet. Beaucoup vont hésiter. C'est humain. Mais ce délai a un coût : une paie retardée, un loyer en souffrance, un emprunt qui manque une échéance.",
+      jaune2: "Ton comptable peut voir les problèmes — mais peut-il les régler? Dans la majorité des cas, un accès limité permet de constater qu'une paie est en retard. Pas de l'émettre. Que le loyer n'a pas été payé. Pas de le payer. La différence entre observer et agir est critique en situation d'urgence.",
+      rouge:  "Personne ne peut payer tes fournisseurs, tes employés ou ton loyer si tu es inaccessible. Une absence de quelques semaines suffit pour manquer une paie, rater un remboursement d'emprunt, ou accumuler du retard avec le gouvernement. Ce n'est pas seulement un problème de liquidités — c'est un problème de confiance. Un fournisseur non payé cherche une garantie. Un employé sans paie cherche un autre emploi."
+    },
+    {
+      title:'Remplaçant désigné',
+      vert:   "Tu as désigné quelqu'un, cette personne est formée, et les autres autour d'elle le savent. C'est le seul scénario où le transfert de direction se passe sans confusion ni perte de temps. La prochaine étape : tester ce plan au moins une fois avant d'en avoir besoin.",
+      jaune1: "La personne est identifiée — mais elle n'a pas été préparée. Voici le scénario concret : tu as un employé qui connaît les opérations mais n'a pas l'autorité formelle. Et ton remplaçant désigné qui a l'autorité, mais ne sait pas comment les choses fonctionnent vraiment. Comment est-ce qu'ils gèrent ça ensemble, sans toi pour arbitrer? L'identification sans formation crée une structure qui tient sur papier, mais pas sous pression.",
+      jaune2: "Quelqu'un pourrait peut-être gérer. Mais 'peut-être' ne suffit pas. Est-ce que cette personne sait exactement quoi faire? Est-ce que les autres le savent aussi? En situation d'urgence, le doute sur qui a l'autorité peut paralyser autant que l'absence elle-même.",
+      rouge:  "Il n'y a personne pour te remplacer. Ton équipe est sans direction. Tes clients sont sans interlocuteur. Mais le vrai problème est plus subtil : même si quelqu'un voulait prendre les commandes, les autres le laisseraient-ils faire? Sans désignation officielle, l'autorité ne se transfère pas — elle disparaît."
+    },
+    {
+      title:'Documentation des processus',
+      vert:   "Tes processus critiques existent sous une forme qu'une autre personne peut suivre sans toi. Assure-toi qu'ils restent à jour — une documentation qui date de deux ans peut créer autant de confusion qu'une absence de documentation.",
+      jaune1: "Certains processus sont documentés. Les plus critiques le sont-ils? En général, ce qui est écrit en premier, c'est ce qui est facile à documenter. Ce qui est le plus difficile à expliquer — et souvent le plus important — reste dans la tête du propriétaire.",
+      jaune2: "Il y a des notes — mais sont-elles trouvables? Sont-elles complètes? Ont-elles été écrites pour toi ou pour quelqu'un d'autre qui doit opérer à ta place? La note rédigée en cinq minutes, avec des demi-phrases et des références à des fichiers qu'on ne retrouve pas, vaut peu en situation d'urgence.",
+      rouge:  "Les processus sont dans ta tête. Si tu pars, ils partent avec toi — et personne ne sait par où commencer. Ce n'est pas un ralentissement, c'est un arrêt. Pas parce que les gens ne veulent pas aider. Parce qu'ils ne savent pas quoi faire ni dans quel ordre le faire."
+    },
+    {
+      title:'Résilience opérationnelle',
+      vert:   "Ton équipe peut gérer les opérations sans toi. Tu as construit quelque chose qui ne dépend pas de ta présence quotidienne. C'est rare. La prochaine question : est-ce que les dimensions financière, juridique et décisionnelle sont au même niveau?",
+      jaune1: "Un à trois mois, c'est le mode survie. L'entreprise tient — mais elle a une date de fin si personne ne prend les bonnes décisions. Renouvellements de contrats, gestion de conflits, relations clients clés : ces décisions s'accumulent sans se régler. L'équipe gère le quotidien. Mais qui décide sur le reste?",
+      jaune2: "Deux à quatre semaines, c'est le coyote qui court dans le vide — l'entreprise continue, mais sans vraiment d'ancrage. Les opérations du quotidien se font encore. Mais les décisions importantes attendent. Et l'accumulation des 'petits problèmes' commence à ressembler à quelque chose de difficile à renverser.",
+      rouge:  "Ce que tu as, c'est essentiellement une job — mais sans assurance-emploi. Moins de deux semaines, c'est le temps qu'il faut pour que les premiers dommages deviennent visibles : une paie ratée, un client sans réponse, une décision reportée trop longtemps. La structure n'est pas là pour absorber une absence."
+    },
+    {
+      title:'Relations clients',
+      vert:   "Tes clients sont liés à ton entreprise, pas à toi personnellement. La relation survivrait à ton départ. C'est l'un des indicateurs les plus directs de la valeur transférable de ce que tu as bâti.",
+      jaune1: "Certains clients connaissent d'autres membres de ton équipe — mais est-ce que ces membres ont le contexte et l'autorité pour les servir correctement? Une introduction partielle sans transfert de dossier peut créer plus de frustration qu'une absence gérée proprement.",
+      jaune2: "Certains clients préfèrent te parler directement. C'est flatteur — mais c'est un risque. Le temps qu'ils t'attendent, leurs propres opérations ralentissent. À un moment, l'attente coûte plus cher que le changement. Ce n'est pas une question de fidélité. C'est une question de combien de temps ils peuvent se permettre d'attendre.",
+      rouge:  "Tes clients achètent toi, pas ton entreprise. Mais voici la dimension qu'on oublie souvent : ils n'ont parfois pas le choix de partir. Dans une chaîne d'approvisionnement, peu importe la relation — si tu es un fournisseur critique et que tu deviens inaccessible, ton client doit trouver une alternative. Pas parce qu'il le veut. Parce que sa propre entreprise en dépend. Ce n'est pas une question de fidélité — c'est une question de survie de son côté."
+    },
+    {
+      title:'Instructions et protection',
+      vert:   "Les dispositions légales sont en place. Les instructions sont documentées et accessibles. Ton entourage sait quoi faire. C'est l'une des protections les plus difficiles à mettre en place — et des plus précieuses une fois qu'elle est là.",
+      jaune1: "Certaines personnes ont des informations — mais pas les mêmes. Comment vont-ils s'organiser s'ils ont des instructions contradictoires? Qui a les coudées franches pour opérer? Une documentation partielle crée une illusion de sécurité qui disparaît au premier test réel.",
+      jaune2: "Des éléments sont en place — mais les lacunes sont critiques. Un mandat incomplet. Un testament non mis à jour depuis l'achat de l'entreprise. Des instructions d'affaires non documentées. Chaque trou est une décision que quelqu'un d'autre devra prendre sans cadre. En situation d'urgence, les mauvaises décisions se prennent vite.",
+      rouge:  "Personne ne sait quoi faire ni où trouver quoi que ce soit. L'absence crée un vide immédiat — pas seulement opérationnel, mais légal. Qui signe? Qui a accès? Qui a l'autorité pour décider au nom de l'entreprise? Sans réponses claires, les actifs se gèlent, les conflits s'installent entre les parties concernées, et les créanciers commencent à s'impatienter."
+    },
+    {
+      title:'Niveau de préparation',
+      vert:   "Tu te sens préparé — et les réponses précédentes tendent à le confirmer. Le diagnostic complet validera ce qui tient vraiment sous pression et identifiera les ajustements pour que la protection reste solide dans le temps.",
+      jaune1: "Tu sens qu'il manque quelque chose — et tu as raison. La préparation partielle donne l'impression d'être couvert, mais les angles morts sont souvent là où on ne regarde pas. La vraie solution n'est pas de corriger le plus visible. C'est de couvrir l'ensemble des dimensions et de désigner les bonnes personnes pour chacune d'entre elles.",
+      jaune2: "Les actions isolées ne suffisent pas. Tu as peut-être un testament. Peut-être un co-signataire bancaire. Peut-être quelques notes quelque part. Mais il suffit d'un seul trou pour tomber dedans. La vraie protection, c'est un ensemble de facteurs cohérents qui se couvrent mutuellement — avec des personnes clairement désignées pour combler chaque point.",
+      rouge:  "Tu sais que tu n'es pas préparé. Ce diagnostic est la première étape pour mesurer l'étendue réelle du risque. L'urgence n'est pas de tout corriger en même temps — c'est de commencer. Identifie les deux ou trois vulnérabilités les plus critiques et règle-les d'abord. Le reste peut suivre une fois la structure de base en place."
+    },
   ];
 
   const qEl = document.getElementById('r-questions');
   qEl.innerHTML = '';
   qData.forEach((q, i) => {
     const s = scores[i] || 0;
-    const level = s === 0 ? 'vert' : s === 1 ? 'jaune' : 'rouge';
+    const level = s === 0 ? 'vert' : s === 1 ? 'jaune1' : s === 2 ? 'jaune2' : 'rouge';
     const row = document.createElement('div');
     row.className = 'q-report-row';
     row.innerHTML = '<span class="qr-num">0' + (i+1) + '</span><div class="qr-dot ' + level + '"></div><div><div class="qr-title">' + q.title + '</div><div class="qr-comment">' + q[level] + '</div></div>';
     qEl.appendChild(row);
   });
+
+  // ── Wrap-up dynamique ────────────────────────────────────────
+  const wrapupTexts = {
+    vert:  "Les bases sont en place. Mais ce résultat repose sur une série de conditions qui n'ont probablement pas encore été testées sous pression réelle. Le PCA complet valide ce qui tient vraiment et identifie les ajustements à faire pour que la protection reste solide dans le temps.",
+    jaune: "Les actions isolées ne suffisent pas. Tu as peut-être un élément ici, une protection là — mais il suffit d'un seul trou pour tomber dedans. La vraie protection, ce n'est pas une liste de mesures prises séparément. C'est un ensemble cohérent de facteurs qui se couvrent mutuellement, avec des personnes désignées et formées pour chacune des dimensions. Une approche globale. Pas des rustines.",
+    rouge: "Le risque est réel et il est immédiat. Par où commencer? Pas tout en même temps. Identifie les deux ou trois vulnérabilités les plus critiques — accès financier, remplaçant désigné, instructions de base — et règle-les d'abord. Le reste peut suivre. Mais attendre, ça ne peut plus."
+  };
+  const wrapupLevel = total <= 8 ? 'vert' : total <= 16 ? 'jaune' : 'rouge';
+  document.getElementById('r-wrapup').textContent = wrapupTexts[wrapupLevel];
 }
 
 function openModal() {
