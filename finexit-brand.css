@@ -1,0 +1,93 @@
+/* ============================================================
+   Finexit — Système de design figé v1  ·  finexit-brand.css
+   Source d'autorité : logo + dépliant graphiste (FINEXIT-26001).
+   Drop-in pour la landing (pca.finexit.ca) et surcouche portail.
+   ============================================================ */
+
+:root {
+  /* Couleurs */
+  --fx-marine:      #07132A;
+  --fx-marine-logo: #000839;
+  --fx-cyan:        #2DC3EA;
+  --fx-cyan-print:  #59C9EB;
+  --fx-bleu:        #123682;
+  --fx-rouge:       #ED1C24;
+  --fx-gris-fort:   #4F4C4D;
+  --fx-gris:        #8B8B8B;
+  --fx-gris-clair:  #EBEEF2;
+  --fx-blanc:       #FFFFFF;
+
+  /* Typographie */
+  --fx-font: 'New Frank', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Géométrie : coins vifs */
+  --fx-radius: 2px;
+}
+
+/* Charger New Frank si les fichiers licenciés sont présents :
+@font-face { font-family:'New Frank'; src:url('/fonts/NewFrank-Regular.woff2') format('woff2'); font-weight:400; }
+@font-face { font-family:'New Frank'; src:url('/fonts/NewFrank-Bold.woff2') format('woff2'); font-weight:700; }
+@font-face { font-family:'New Frank'; src:url('/fonts/NewFrank-ExtraBold.woff2') format('woff2'); font-weight:800; }
+*/
+
+body.fx { font-family:var(--fx-font); color:var(--fx-gris-fort); background:var(--fx-blanc); line-height:1.55; }
+
+/* ---- Titres ---- */
+.fx-eyebrow { font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--fx-cyan); font-size:.8rem; }
+.fx-h1 { font-weight:800; text-transform:uppercase; color:var(--fx-marine); font-size:2.6rem; line-height:1.02; margin:.2em 0; }
+.fx-h1 em, .fx-h1 .cy { color:var(--fx-cyan); font-style:normal; }
+.fx-h2 { font-weight:800; text-transform:uppercase; color:var(--fx-cyan); font-size:1.6rem; letter-spacing:.01em; }
+.fx-label { font-weight:700; text-transform:uppercase; color:var(--fx-marine); letter-spacing:.03em; }
+
+/* ---- Bloc statistique ---- */
+.fx-stat { display:inline-block; }
+.fx-stat .num { font-weight:800; color:var(--fx-cyan); font-size:4rem; line-height:.9; }
+.fx-stat .lab { font-weight:700; text-transform:uppercase; color:var(--fx-marine); display:block; }
+.fx-stat .cap { color:var(--fx-gris-fort); font-size:.9rem; }
+
+/* ---- Puces carrées cyan ---- */
+.fx-list { list-style:none; padding-left:0; }
+.fx-list li { position:relative; padding-left:1.1em; margin:.35em 0; }
+.fx-list li::before { content:'▪'; color:var(--fx-cyan); position:absolute; left:0; top:0; }
+
+/* ---- Pull-quote ---- */
+.fx-quote { color:var(--fx-marine); font-weight:700; font-size:1.25rem; line-height:1.35; }
+.fx-quote::before { content:'«'; color:var(--fx-cyan); font-size:1.6em; vertical-align:-.15em; margin-right:.15em; }
+.fx-quote .cy { color:var(--fx-cyan); }
+
+/* ---- Boutons / CTA (coins vifs) ---- */
+.fx-btn { display:inline-block; font-family:var(--fx-font); font-weight:700; text-transform:uppercase;
+  letter-spacing:.03em; border:0; border-radius:var(--fx-radius); padding:.7em 1.4em; cursor:pointer; text-decoration:none; }
+.fx-btn--cyan { background:var(--fx-cyan); color:var(--fx-marine); }
+.fx-btn--marine { background:var(--fx-marine); color:var(--fx-blanc); }
+.fx-btn--ghost { background:transparent; color:var(--fx-marine); box-shadow:inset 0 0 0 2px var(--fx-marine); }
+
+/* ---- Barre de section (sur fond clair) ---- */
+.fx-sectionbar { background:var(--fx-marine); color:var(--fx-blanc); font-weight:800; text-transform:uppercase;
+  padding:.6em 1em; border-left:4px solid var(--fx-cyan); }
+
+/* ---- Surfaces sombres ---- */
+.fx-dark { background:var(--fx-marine); color:var(--fx-blanc); }
+.fx-dark .fx-h1, .fx-dark .fx-label { color:var(--fx-blanc); }
+
+/* ---- Filets / séparateurs ---- */
+.fx-rule { height:2px; background:var(--fx-cyan); border:0; }
+.fx-rule--red { height:2px; background:var(--fx-rouge); border:0; }
+
+/* ---- Zones de diagnostic (remap on-brand, SANS vert/jaune) ----
+   Solide = cyan · Vulnérable = bleu roi · Critique = rouge */
+.fx-zone { border-radius:var(--fx-radius); padding:1em 1.2em; color:var(--fx-blanc); font-weight:700; }
+.fx-zone--solide    { background:var(--fx-cyan);  color:var(--fx-marine); }
+.fx-zone--vulnerable{ background:var(--fx-bleu); }
+.fx-zone--critique  { background:var(--fx-rouge); }
+.fx-zone-badge { display:inline-block; padding:.2em .7em; border-radius:var(--fx-radius); font-weight:700;
+  text-transform:uppercase; font-size:.75rem; letter-spacing:.04em; }
+.fx-zone-badge--solide    { background:var(--fx-cyan);  color:var(--fx-marine); }
+.fx-zone-badge--vulnerable{ background:var(--fx-bleu); color:#fff; }
+.fx-zone-badge--critique  { background:var(--fx-rouge); color:#fff; }
+
+/* ---- Carte ---- */
+.fx-card { background:var(--fx-blanc); border:1px solid var(--fx-gris-clair); border-radius:var(--fx-radius); padding:1.2em 1.4em; }
+
+/* ---- Champ à remplir (documents/formulaires) ---- */
+.fx-field { background:var(--fx-gris-clair); border:1px solid var(--fx-gris); border-radius:var(--fx-radius); padding:.5em .7em; }
