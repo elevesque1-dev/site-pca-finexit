@@ -1260,16 +1260,16 @@
           <div>
             <h2>Les trois sphères du <em>risque</em>.</h2>
             <p class="section-lede">
-              Chaque question mesure une vulnérabilité concrète. Le résultat consolide tes scores en trois zones : opérationnelle, juridique, et de relève.
+              Chaque question mesure une dépendance concrète. Le résultat consolide tes réponses en un ratio pondéré sur trois axes : Ventes &amp; clients, Prestation &amp; opérations, et Administration.
             </p>
           </div>
           <ul class="checklist">
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6 L5 9 L10 3" stroke-width="2" stroke-linecap="round"></path></svg></span>Dépendance opérationnelle et décisionnelle</li>
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6 L5 9 L10 3" stroke-width="2" stroke-linecap="round"></path></svg></span>Documentation des processus critiques</li>
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6 L5 9 L10 3" stroke-width="2" stroke-linecap="round"></path></svg></span>Accès financiers et bancaires</li>
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6 L5 9 L10 3" stroke-width="2" stroke-linecap="round"></path></svg></span>Mandats légaux et procurations d'affaires</li>
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6 L5 9 L10 3" stroke-width="2" stroke-linecap="round"></path></svg></span>Remplaçant désigné et plan de relève</li>
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6 L5 9 L10 3" stroke-width="2" stroke-linecap="round"></path></svg></span>Résilience sans le propriétaire</li>
+            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6 L5 9 L10 3" stroke-width="2" stroke-linecap="round"></path></svg></span>Clients liés à toi ou à l'entreprise</li>
+            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6 L5 9 L10 3" stroke-width="2" stroke-linecap="round"></path></svg></span>Acquisition, prix et signature des contrats</li>
+            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6 L5 9 L10 3" stroke-width="2" stroke-linecap="round"></path></svg></span>Continuité de la production et de la livraison</li>
+            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6 L5 9 L10 3" stroke-width="2" stroke-linecap="round"></path></svg></span>Documentation des façons de faire</li>
+            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6 L5 9 L10 3" stroke-width="2" stroke-linecap="round"></path></svg></span>Relève opérationnelle désignée et formée</li>
+            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6 L5 9 L10 3" stroke-width="2" stroke-linecap="round"></path></svg></span>Accès financiers, signatures et documents critiques</li>
           </ul>
         </div>
         <div class="stats">
@@ -1445,16 +1445,9 @@
         <p id="rp-date"></p>
       </div>
       <div class="score-hero-block" id="r-hero"></div>
-      <div class="rp-section-label">Résultats par dimension</div>
+      <div class="rp-section-label">Tes trois axes de dépendance</div>
       <div class="cadran-grid" id="r-cadrans"></div>
-    </div>
-    <div class="report-page">
-      <div class="rp-header">
-        <div class="rp-logo">Finexit · Plan de Continuité des Affaires</div>
-        <h2>Analyse par dimension</h2>
-        <p>Critique &nbsp;·&nbsp; Vulnérable &nbsp;·&nbsp; Solide &nbsp;—&nbsp; du plus dépendant au plus autonome</p>
-      </div>
-      <div id="r-questions"></div>
+      <p class="rp-mailnote" style="margin-top:28px;font-size:14px;color:var(--gray-strong);line-height:1.6;">Ton rapport détaillé t'a été envoyé par courriel — une analyse approfondie, axe par axe, avec les premières pistes pour réduire ta dépendance.</p>
     </div>
     <div class="report-page">
       <div class="rp-header">
@@ -1507,21 +1500,36 @@
 "use strict";
 
 const questions = [
-  { domain: "Dépendance décisionnelle", text: "Si tu devais t'absenter une semaine complète sans avertir, combien de décisions importantes resteraient bloquées en attendant ton retour ?", answers: [{ text: "Presque toutes — personne d'autre ne peut les prendre à ma place.", score: 3 }, { text: "La majorité — certaines se prendraient, mais les autres resteraient bloquées.", score: 2 }, { text: "Quelques-unes — mon équipe peut gérer la plupart des situations.", score: 1 }, { text: "Aucune — nous avons une structure de décision claire qui fonctionne sans moi.", score: 0 }] },
-  { domain: "Accès financier", text: "Si tu étais temporairement indisponible, qui d'autre aurait le pouvoir de signer les chèques ou d'accéder aux comptes de ton entreprise ?", answers: [{ text: "Personne — je suis le seul signataire autorisé.", score: 3 }, { text: "Mon comptable a un accès limité, mais pas pour les opérations courantes.", score: 2 }, { text: "Il y a un co-signataire, mais il n'est pas vraiment au courant des opérations.", score: 1 }, { text: "Plusieurs personnes autorisées, avec des instructions claires en place.", score: 0 }] },
-  { domain: "Remplaçant désigné", text: "As-tu une personne officiellement désignée et prête à te remplacer temporairement si tu n'étais pas disponible ?", answers: [{ text: "Non, il n'y a personne pour assurer ma place.", score: 3 }, { text: "Quelqu'un pourrait gérer, mais ce n'est pas formalisé.", score: 2 }, { text: "Il y a une personne identifiée, mais elle n'a pas été préparée pour ce rôle.", score: 1 }, { text: "Oui — un remplaçant est désigné, formé et informé.", score: 0 }] },
-  { domain: "Documentation des processus", text: "Est-ce que les façons de faire clés pour ton entreprise (opérations, ventes, livraison) sont écrites et documentées quelque part ?", answers: [{ text: "Non — c'est dans ma tête.", score: 3 }, { text: "Quelques notes informelles, mais rien de structuré.", score: 2 }, { text: "Partiellement — certains processus sont écrits, d'autres non.", score: 1 }, { text: "Oui — tout est documenté, accessible et à jour.", score: 0 }] },
-  { domain: "Résilience opérationnelle", text: "Combien de temps ton entreprise pourrait-elle fonctionner normalement sans toi avant que les problèmes deviennent vraiment graves ?", answers: [{ text: "Moins de 2 semaines.", score: 3 }, { text: "2 à 4 semaines.", score: 2 }, { text: "1 à 3 mois.", score: 1 }, { text: "Plus de 3 mois.", score: 0 }] },
-  { domain: "Relations clients", text: "Est-ce que tes clients les plus importants travaillent et communiquent aussi avec d'autres personnes de ton équipe ?", answers: [{ text: "Non — ils traitent exclusivement avec moi.", score: 3 }, { text: "Rarement — ils préfèrent me parler directement.", score: 2 }, { text: "Partiellement — certains connaissent d'autres membres de mon équipe.", score: 1 }, { text: "Oui — les relations clients sont partagées et documentées.", score: 0 }] },
-  { domain: "Instructions et protection", text: "Si tu devenais indisponible demain matin, est-ce que les personnes clés autour de toi sauraient quoi faire et où trouver les documents et instructions dont elles ont besoin ?", answers: [{ text: "Non — personne ne sait vraiment quoi faire ni où trouver quoi que ce soit.", score: 3 }, { text: "Ma famille a une idée générale, mais mon équipe et mes partenaires professionnels ne savent rien.", score: 2 }, { text: "Certaines personnes ont des informations, mais rien n'est formalisé ni documenté.", score: 1 }, { text: "Oui — les personnes clés ont des instructions écrites, claires et facilement accessibles.", score: 0 }] },
-  { domain: "Niveau de préparation", text: "Si on te demandait aujourd'hui : « Ton entreprise est-elle bien organisée et protégée si tu es absent sans prévenir ? » — quelle serait ta réponse la plus honnête ?", answers: [{ text: "Absolument pas — nous n'avons rien préparé.", score: 3 }, { text: "Probablement pas — j'y ai pensé mais rien n'est en place.", score: 2 }, { text: "En partie — il y a des lacunes que je connais.", score: 1 }, { text: "Oui — nous sommes bien préparés.", score: 0 }] }
+  // Axe 1 — Ventes & clients (poids 40 %)
+  { axe: "ventes", domain: "Ventes & clients", text: "Est-ce que les clients achètent de toi ou de l'entreprise ?", answers: [{ text: "Ils sont liés à l'entreprise; plusieurs personnes les servent.", score: 0 }, { text: "La plupart connaissent quelqu'un d'autre, mais je reste le contact principal.", score: 1 }, { text: "Quelques-uns parlent à l'équipe, mais la majorité veulent me parler à moi.", score: 2 }, { text: "Mes meilleurs clients achètent de moi; sans moi, la relation tombe.", score: 3 }] },
+  { axe: "ventes", domain: "Ventes & clients", text: "Qui va chercher les nouvelles ventes ?", answers: [{ text: "Une équipe ou un système d'acquisition tourne sans moi.", score: 0 }, { text: "On a un processus, mais je m'occupe des gros dossiers.", score: 1 }, { text: "Je pilote l'essentiel; l'équipe suit.", score: 2 }, { text: "S'il faut de nouveaux clients, c'est moi qui vais les chercher, point.", score: 3 }] },
+  { axe: "ventes", domain: "Ventes & clients", text: "Qui fixe les prix et négocie les contrats ?", answers: [{ text: "Des règles claires permettent à l'équipe de conclure sans moi.", score: 0 }, { text: "Mon équipe s'occupe du courant, je tranche les exceptions.", score: 1 }, { text: "Je valide presque toutes les ententes.", score: 2 }, { text: "Rien ne se price ni ne se signe sans moi.", score: 3 }] },
+  // Axe 2 — Prestation & opérations (poids 40 %)
+  { axe: "prestation", domain: "Prestation & opérations", text: "Si tu t'absentais un mois sans préavis, la production et la livraison continueraient-elles ?", answers: [{ text: "Oui, normalement; mon équipe s'en occupe.", score: 0 }, { text: "Oui, mais ça ralentirait sur les décisions.", score: 1 }, { text: "Partiellement; plusieurs choses attendraient mon retour.", score: 2 }, { text: "Non; ça s'arrête vite sans moi.", score: 3 }] },
+  { axe: "prestation", domain: "Prestation & opérations", text: "Les façons de faire clés (opérations, livraison) sont-elles documentées et faisables sans toi ?", answers: [{ text: "Oui : écrites, à jour, accessibles.", score: 0 }, { text: "En partie; les plus critiques sont dans ma tête.", score: 1 }, { text: "Quelques notes éparpillées, difficiles à suivre.", score: 2 }, { text: "Tout est dans ma tête.", score: 3 }] },
+  { axe: "prestation", domain: "Prestation & opérations", text: "Quelqu'un, formé et reconnu par l'équipe, peut-il diriger les opérations à ta place ?", answers: [{ text: "Oui : désigné, formé, et l'équipe le sait.", score: 0 }, { text: "Identifié, mais pas vraiment préparé.", score: 1 }, { text: "Quelqu'un pourrait « peut-être » gérer, rien de formel.", score: 2 }, { text: "Personne.", score: 3 }] },
+  // Axe 3 — Administration (poids 20 %)
+  { axe: "admin", domain: "Administration", text: "Si tu étais indisponible, quelqu'un d'autre pourrait-il payer, signer et accéder aux comptes ?", answers: [{ text: "Oui : accès et pouvoir de signer en place, avec instructions.", score: 0 }, { text: "Il y a un co-signataire, mais sans instructions claires.", score: 1 }, { text: "Quelqu'un peut voir, mais pas agir ni payer.", score: 2 }, { text: "Personne ne peut payer ni signer sans moi.", score: 3 }] },
+  { axe: "admin", domain: "Administration", text: "Les documents critiques (contrats, accès, obligations) sont-ils centralisés et trouvables sans toi ?", answers: [{ text: "Oui : centralisés, accessibles aux bonnes personnes.", score: 0 }, { text: "En partie; il faudrait me demander pour le reste.", score: 1 }, { text: "Éparpillés; difficiles à reconstituer.", score: 2 }, { text: "Tout passe par moi; personne ne saurait où chercher.", score: 3 }] }
 ];
 
+// Zones verrouillées — bandes sur le RATIO de dépendance (0–100 %)
 const zones = [
-  { min: 0,  max: 4,  color: "#2DC3EA", label: "Solide",     title: "Ton entreprise tient sans toi.", desc: "Base transférable. Reste à tester sous pression réelle." },
-  { min: 5,  max: 14, color: "#123682", label: "Vulnérable", title: "Ça ralentit fortement.",         desc: "Des angles morts à corriger. Vendable, mais avec des accrocs." },
-  { min: 15, max: 24, color: "#ED1C24", label: "Critique",   title: "Sans toi, ça s'arrête.",         desc: "C'est la priorité, et ça se règle." }
+  { min: 0,  max: 20,  color: "#2DC3EA", label: "Solide",     title: "Ton entreprise tient sans toi.", desc: "Base transférable. Reste à tester sous pression réelle." },
+  { min: 21, max: 60,  color: "#123682", label: "Vulnérable", title: "Ça ralentit fortement.",         desc: "Des angles morts à corriger. Vendable, mais avec des accrocs." },
+  { min: 61, max: 100, color: "#ED1C24", label: "Critique",   title: "Sans toi, ça s'arrête.",         desc: "C'est la priorité, et ça se règle." }
 ];
+
+// Ratio de dépendance pondéré 40 / 40 / 20 — le score EST le ratio (aucune inversion).
+function computeAxes() {
+  const ventes     = Math.round(((scores[0]||0) + (scores[1]||0) + (scores[2]||0)) / 9 * 100);
+  const prestation = Math.round(((scores[3]||0) + (scores[4]||0) + (scores[5]||0)) / 9 * 100);
+  const admin      = Math.round(((scores[6]||0) + (scores[7]||0))                  / 6 * 100);
+  const ratio      = Math.round(0.40 * ventes + 0.40 * prestation + 0.20 * admin);
+  return { ventes, prestation, admin, ratio };
+}
+function zoneForRatio(r) { return zones.find(z => r >= z.min && r <= z.max); }
+function badgeKeyForRatio(r) { return r <= 20 ? 'solide' : r <= 60 ? 'vulnerable' : 'critique'; }
 
 let currentQ = 0;
 let scores = new Array(8).fill(null);
@@ -1544,7 +1552,7 @@ function renderQuestion(idx) {
   document.getElementById('q-text').textContent = q.text;
   document.getElementById('btn-next').disabled = true;
   const filled = scores.filter(s => s !== null).length;
-  document.getElementById('q-score-live').textContent = filled > 0 ? 'Score en cours : ' + scores.filter(s=>s!==null).reduce((a,b)=>a+b,0) + ' / ' + (filled * 3) : '';
+  document.getElementById('q-score-live').textContent = filled > 0 ? filled + ' / 8 répondues' : '';
   const labels = ['A', 'B', 'C', 'D'];
   const container = document.getElementById('q-answers');
   container.innerHTML = '';
@@ -1581,11 +1589,10 @@ function toggleEmailWhy() {
 }
 
 function showEmailGate() {
-  const total = scores.reduce((a, b) => a + (b || 0), 0);
-  const ratioPct = Math.round(total / 24 * 100);
+  const { ratio } = computeAxes();
   document.getElementById('phase-quiz').classList.remove('active');
   document.getElementById('phase-quiz').style.display = 'none';
-  document.getElementById('email-score-display').textContent = ratioPct + '%';
+  document.getElementById('email-score-display').textContent = ratio + '%';
   document.getElementById('phase-email').classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -1597,14 +1604,11 @@ function submitEmail() {
     document.getElementById('email-input').focus();
     return;
   }
-  const scoreRaw = scores.reduce((a, b) => a + (b || 0), 0);
-  const scorePct = Math.round((1 - scoreRaw / 24) * 100);
-  const zone = zones.find(z => scoreRaw >= z.min && scoreRaw <= z.max);
-  const domains = ["Dépendance décisionnelle","Accès financier","Remplaçant désigné","Documentation des processus","Résilience opérationnelle","Relations clients","Instructions et protection","Niveau de préparation"];
-  const breakdown = domains.map((d, i) => ({ dimension: d, score: scores[i] }));
+  const { ventes, prestation, admin, ratio } = computeAxes();
+  const zone = zoneForRatio(ratio);
   fetch('https://portail.finexit.ca/api/pca-leads', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: emailVal, scoreRaw, scorePct, zone: zone ? zone.label : 'Inconnu', breakdown, source: 'pca.finexit.ca' })
+    body: JSON.stringify({ email: emailVal, ratio, zone: zone ? zone.label : 'Inconnu', axes: { ventes, prestation, admin }, source: 'pca.finexit.ca' })
   }).catch(() => {});
   document.getElementById('phase-email').classList.remove('active');
   document.getElementById('phase-email').style.display = 'none';
@@ -1612,10 +1616,10 @@ function submitEmail() {
 }
 
 function showResult(email) {
-  const total = scores.reduce((a, b) => a + (b || 0), 0);
-  const ratioPct = Math.round(total / 24 * 100);
-  const zone = zones.find(z => total >= z.min && total <= z.max);
-  const badgeKey = total <= 4 ? 'solide' : total <= 14 ? 'vulnerable' : 'critique';
+  const { ventes, prestation, admin, ratio } = computeAxes();
+  const ratioPct = ratio;
+  const zone = zoneForRatio(ratio);
+  const badgeKey = badgeKeyForRatio(ratio);
   document.getElementById('phase-result').classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
   document.getElementById('rp-date').textContent = new Date().toLocaleDateString('fr-CA', { year:'numeric', month:'long', day:'numeric' }) + ' · Confidentiel';
@@ -1633,59 +1637,33 @@ function showResult(email) {
       '<div style="font-size:14px;color:var(--gray-strong);line-height:1.6;font-family:Inter,sans-serif">' + zone.desc + '</div>' +
     '</div>';
 
-  const groups = [
-    { name:'Direction',   subdesc:'Autonomie décisionnelle et relève',   indices:[0,2,7], tags:['Décisions','Remplaçant','Préparation'] },
-    { name:'Opérations',  subdesc:'Processus et résilience interne',      indices:[3,4],   tags:['Documentation','Équipe'] },
-    { name:'Clients',     subdesc:'Dépendance aux relations personnelles', indices:[5],     tags:['Relations clients'] },
-    { name:'Protection',  subdesc:'Couverture financière et légale',       indices:[1,6],   tags:['Accès financier','Instructions'] },
+  const axes = [
+    { name:'Ventes & clients',        weight:'40 %', pct: ventes,     note:'Clients, acquisition, prix et contrats.' },
+    { name:'Prestation & opérations', weight:'40 %', pct: prestation, note:'Production, documentation, relève opérationnelle.' },
+    { name:'Administration',          weight:'20 %', pct: admin,      note:'Finances, signatures, accès et documents.' },
   ];
 
   const cadransEl = document.getElementById('r-cadrans');
   cadransEl.innerHTML = '';
-  groups.forEach(g => {
-    const gPct = Math.round(g.indices.reduce((s,i) => s + ((scores[i]||0)/3), 0) / g.indices.length * 100);
-    const gColor = gPct <= 20 ? '#2DC3EA' : gPct < 60 ? '#123682' : '#ED1C24';
-    const gLabel = gPct <= 20 ? 'Solide' : gPct < 60 ? 'Vulnérable' : 'Critique';
-    const bw = Math.max(2, Math.min(98, gPct));
-    const tagStyle = 'background:rgba(255,255,255,0.05);color:' + gColor + ';border:1px solid ' + gColor;
+  axes.forEach(a => {
+    const c = a.pct <= 20 ? '#2DC3EA' : a.pct <= 60 ? '#123682' : '#ED1C24';
+    const l = a.pct <= 20 ? 'Solide' : a.pct <= 60 ? 'Vulnérable' : 'Critique';
+    const bw = Math.max(2, Math.min(98, a.pct));
     const card = document.createElement('div');
     card.className = 'cadran-card';
-    card.style.borderTopColor = gColor;
+    card.style.borderTopColor = c;
     card.style.alignItems = 'flex-start';
     card.innerHTML =
       '<div style="display:flex;align-items:flex-start;justify-content:space-between;width:100%;margin-bottom:16px">' +
         '<div>' +
-          '<div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:' + gColor + ';margin-bottom:5px;font-family:Inter,sans-serif">' + gLabel + '</div>' +
-          '<div class="cadran-name" style="text-align:left">' + g.name + '</div>' +
-          '<div class="cadran-subdesc" style="text-align:left">' + g.subdesc + '</div>' +
+          '<div style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:' + c + ';margin-bottom:5px;font-family:Inter,sans-serif">' + l + '</div>' +
+          '<div class="cadran-name" style="text-align:left">' + a.name + '</div>' +
+          '<div class="cadran-subdesc" style="text-align:left">Poids ' + a.weight + ' · ' + a.note + '</div>' +
         '</div>' +
-        '<div style="font-size:42px;font-weight:600;color:' + gColor + ';line-height:1;letter-spacing:-0.03em;font-family:Inter,sans-serif;flex-shrink:0;margin-left:12px">' + gPct + '%</div>' +
+        '<div style="font-size:42px;font-weight:600;color:' + c + ';line-height:1;letter-spacing:-0.03em;font-family:Inter,sans-serif;flex-shrink:0;margin-left:12px">' + a.pct + '%</div>' +
       '</div>' +
-      '<div style="width:100%;height:3px;background:rgba(255,255,255,0.07);margin-bottom:14px"><div style="height:100%;width:' + bw + '%;background:' + gColor + '"></div></div>' +
-      '<div class="cadran-tags" style="justify-content:flex-start">' + g.tags.map(t => '<span class="cadran-tag" style="' + tagStyle + '">' + t + '</span>').join('') + '</div>';
+      '<div style="width:100%;height:3px;background:rgba(255,255,255,0.07)"><div style="height:100%;width:' + bw + '%;background:' + c + '"></div></div>';
     cadransEl.appendChild(card);
-  });
-
-  const qData = [
-    { title:'Dépendance décisionnelle',    vert:"Ton entreprise peut fonctionner sans toi pendant quelques semaines. C'est une base solide — mais une base n'est pas un plan.", jaune:"Ton absence ralentirait les opérations. Certaines décisions attendraient ton retour. En cas d'absence prolongée, ça devient un problème réel.", rouge:"Ton entreprise tourne autour de toi. Si tu deviens inaccessible, elle s'arrête. C'est la vulnérabilité la plus directe sur la valeur de ce que tu as bâti." },
-    { title:'Accès financier',             vert:"L'accès aux finances ne dépend pas de ta présence. Tes fournisseurs peuvent être payés, les opérations continuent.", jaune:"L'accès financier est possible mais crée des frictions. En situation d'urgence, ce délai peut se transformer en crise de liquidités.", rouge:"Personne ne peut payer tes fournisseurs si tu es inaccessible. Une absence de quelques semaines peut suffire à manquer des échéances critiques." },
-    { title:'Remplaçant désigné',          vert:"Tu as identifié quelqu'un capable de te remplacer temporairement. La prochaine étape : formaliser ce rôle par écrit et le tester.", jaune:"Il y a peut-être quelqu'un, mais ce n'est ni désigné formellement, ni préparé. En cas d'urgence, l'improvisation prend le dessus.", rouge:"Il n'y a personne pour te remplacer. Si tu disparais — même temporairement — ton équipe est sans direction et tes clients sans interlocuteur." },
-    { title:'Documentation des processus', vert:"Tes processus critiques existent sous une forme que quelqu'un d'autre peut suivre. Assure-toi qu'ils sont maintenus à jour.", jaune:"La documentation existe partiellement. Des trous importants subsistent — surtout pour les situations les plus critiques.", rouge:"Les processus sont dans ta tête. Si tu pars, ils partent avec toi. C'est une dépendance invisible jusqu'au moment où elle coûte cher." },
-    { title:'Résilience opérationnelle',   vert:"Ton équipe peut gérer les opérations sans toi. Tu as construit quelque chose qui ne dépend pas de ta présence quotidienne.", jaune:"Ton équipe gère le quotidien, mais les décisions importantes restent bloquées sans toi. En cas d'absence prolongée, les irritants deviennent des crises.", rouge:"Tes employés ne savent pas quoi faire sans toi. L'absence crée une paralysie immédiate — ce n'est pas une question de compétence, mais de structure." },
-    { title:'Relations clients',           vert:"Tes clients sont liés à ton entreprise, pas à toi personnellement. La relation survivrait à ton départ.", jaune:"Certains clients clés sont liés à ta relation personnelle. En cas d'absence prolongée, ce lien devient un risque de rétention.", rouge:"Tes clients achètent toi, pas ton entreprise. Si tu pars, ils partent. C'est la vulnérabilité qui réduirait le plus la valeur de ce que tu as bâti." },
-    { title:'Instructions et protection',  vert:"Les dispositions légales et les instructions sont en place. Ton entourage sait quoi faire.", jaune:"Des éléments sont en place, mais des lacunes subsistent — mandats incomplets, testament non mis à jour, instructions d'affaires non documentées.", rouge:"Personne ne sait quoi faire si tu devenais invalide ou décédais. Ce vide peut entraîner des conflits entre héritiers et le gel des actifs." },
-    { title:'Niveau de préparation',       vert:"Tu te sens préparé — et les réponses précédentes tendent à le confirmer. Le diagnostic complet validera ce qui tient vraiment sous pression.", jaune:"Tu as l'impression d'être partiellement préparé, mais tu sens qu'il manque quelque chose. Tu as raison — il y a des angles morts importants.", rouge:"Tu sais que tu n'es pas préparé. Ce diagnostic est la première étape pour mesurer l'étendue réelle du risque et décider quoi corriger en priorité." },
-  ];
-
-  const qEl = document.getElementById('r-questions');
-  qEl.innerHTML = '';
-  qData.forEach((q, i) => {
-    const s = scores[i] || 0;
-    const level = s === 0 ? 'vert' : s === 1 ? 'jaune' : 'rouge';
-    const row = document.createElement('div');
-    row.className = 'q-report-row';
-    row.innerHTML = '<span class="qr-num">0' + (i+1) + '</span><div class="qr-dot ' + level + '"></div><div><div class="qr-title">' + q.title + '</div><div class="qr-comment">' + q[level] + '</div></div>';
-    qEl.appendChild(row);
   });
 }
 
